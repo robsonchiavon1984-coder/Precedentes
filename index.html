@@ -8,43 +8,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#f5f6f3;--paper-2:#ffffff;--paper-3:#eceee8;--ink:#1c231f;--ink-2:#3f4a44;--ink-3:#6b756e;
-  --line:#d8ddd5;--line-2:#c4cbc0;--pine:#0f4d3a;--pine-2:#146c50;--pine-soft:#e4efe9;
-  --brass:#a9852f;--brass-soft:#f3ead3;--danger:#8f2f2a;--danger-soft:#f6e4e2;--gold-line:#c7a45a;
-  --shadow:0 1px 2px rgba(28,35,31,.06), 0 8px 28px rgba(28,35,31,.08);
-  --shadow-sm:0 1px 2px rgba(28,35,31,.06), 0 3px 10px rgba(28,35,31,.06);
-  --radius:14px;--radius-sm:9px;
-  --serif:'Spectral', Georgia, 'Times New Roman', serif;
-  --sans:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:var(--sans);color:var(--ink);background:var(--paper);
-  background-image:radial-gradient(circle at 1px 1px, rgba(28,35,31,.035) 1px, transparent 0);background-size:22px 22px;
-  line-height:1.5;-webkit-font-smoothing:antialiased;}
-button{font-family:inherit}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;margin:0}
-a{color:var(--pine)}
-header.site{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fbfcfa, #f4f6f2);position:sticky;top:0;z-index:40;}
-.site-inner{max-width:1280px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:18px}
-.seal{width:46px;height:46px;flex:none;border-radius:50%;border:1.5px solid var(--gold-line);display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 35%, #17563f, #0d3f2f);color:#e9dcae;font-family:var(--serif);font-weight:700;font-size:19px;
-  box-shadow:inset 0 0 0 3px rgba(199,164,90,.18);}
-.brand h1{font-size:20px;line-height:1.1}
-.brand .sub{font-size:12.5px;color:var(--ink-3);letter-spacing:.02em;margin-top:2px}
+:root{--paper:#f5f6f3;--paper-2:#ffffff;--paper-3:#eceee8;--ink:#1c231f;--ink-2:#3f4a44;--ink-3:#6b756e;--line:#d8ddd5;--line-2:#c4cbc0;--pine:#0f4d3a;--pine-2:#146c50;--pine-soft:#e4efe9;--brass:#a9852f;--brass-soft:#f3ead3;--danger:#8f2f2a;--danger-soft:#f6e4e2;--gold-line:#c7a45a;--shadow:0 1px 2px rgba(28,35,31,.06), 0 8px 28px rgba(28,35,31,.08);--shadow-sm:0 1px 2px rgba(28,35,31,.06), 0 3px 10px rgba(28,35,31,.06);--radius:14px;--serif:'Spectral', Georgia, serif;--sans:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;--mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);background-image:radial-gradient(circle at 1px 1px, rgba(28,35,31,.035) 1px, transparent 0);background-size:22px 22px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+button{font-family:inherit}h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;margin:0}a{color:var(--pine)}
+header.site{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fbfcfa,#f4f6f2);position:sticky;top:0;z-index:40;}
+.site-inner{max-width:1320px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:18px}
+.seal{width:46px;height:46px;flex:none;border-radius:50%;border:1.5px solid var(--gold-line);display:grid;place-items:center;background:radial-gradient(circle at 50% 35%, #17563f, #0d3f2f);color:#e9dcae;font-family:var(--serif);font-weight:700;font-size:19px;box-shadow:inset 0 0 0 3px rgba(199,164,90,.18);}
+.brand h1{font-size:20px;line-height:1.1}.brand .sub{font-size:12.5px;color:var(--ink-3);letter-spacing:.02em;margin-top:2px}
 .header-stats{margin-left:auto;display:flex;gap:10px}
 .chip-stat{border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:6px 13px;font-size:12.5px;color:var(--ink-2);display:flex;gap:7px;align-items:center;box-shadow:var(--shadow-sm);}
 .chip-stat b{font-family:var(--mono);color:var(--pine);font-weight:600}
-nav.tabs{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;gap:4px;flex-wrap:wrap}
-.tab-btn{appearance:none;border:none;background:transparent;color:var(--ink-3);font-size:14px;font-weight:600;padding:14px 16px 12px;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:color .15s;}
-.tab-btn:hover{color:var(--ink)}
-.tab-btn.active{color:var(--pine);border-bottom-color:var(--pine)}
+nav.tabs{max-width:1320px;margin:0 auto;padding:0 24px;display:flex;gap:4px;flex-wrap:wrap}
+.tab-btn{appearance:none;border:none;background:transparent;color:var(--ink-3);font-size:14px;font-weight:600;padding:14px 16px 12px;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;}
+.tab-btn:hover{color:var(--ink)}.tab-btn.active{color:var(--pine);border-bottom-color:var(--pine)}
 .tab-btn .count{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:5px}
-main{max-width:1280px;margin:0 auto;padding:22px 24px 80px}
-.view{display:none;animation:fade .25s ease}
-.view.active{display:block}
+main{max-width:1320px;margin:0 auto;padding:22px 24px 80px}
+.view{display:none;animation:fade .25s ease}.view.active{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
 .field{display:flex;flex-direction:column;gap:4px}
@@ -52,97 +32,74 @@ main{max-width:1280px;margin:0 auto;padding:22px 24px 80px}
 input,select,textarea{font-family:var(--sans);font-size:13.5px;color:var(--ink);background:var(--paper-2);border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;outline:none;transition:border-color .15s, box-shadow .15s;}
 input:focus,select:focus,textarea:focus{border-color:var(--pine);box-shadow:0 0 0 3px var(--pine-soft)}
 textarea{resize:vertical;line-height:1.55}
-.search-wrap{flex:1;min-width:200px}
-.search-wrap input{width:100%}
-.filter-min select{min-width:130px}
+.search-wrap{flex:1;min-width:180px}.search-wrap input{width:100%}.filter-min select{min-width:120px}
 .btn{appearance:none;border:1px solid var(--line-2);background:var(--paper-2);color:var(--ink);font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:9px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s;white-space:nowrap;}
 .btn:hover{border-color:var(--ink-3);background:var(--paper-3)}
-.btn.primary{background:var(--pine);border-color:var(--pine);color:#f0f5f1}
-.btn.primary:hover{background:var(--pine-2);border-color:var(--pine-2)}
-.btn.ghost{background:transparent;border-color:transparent}
-.btn.ghost:hover{background:var(--paper-3)}
-.btn.danger{color:var(--danger);border-color:var(--danger-soft);background:var(--danger-soft)}
-.btn.danger:hover{background:#f0d4d0}
-.btn.small{padding:6px 10px;font-size:12.5px}
-.btn svg{width:16px;height:16px;flex:none}
+.btn.primary{background:var(--pine);border-color:var(--pine);color:#f0f5f1}.btn.primary:hover{background:var(--pine-2);border-color:var(--pine-2)}
+.btn.ghost{background:transparent;border-color:transparent}.btn.ghost:hover{background:var(--paper-3)}
+.btn.danger{color:var(--danger);border-color:var(--danger-soft);background:var(--danger-soft)}.btn.danger:hover{background:#f0d4d0}
+.btn.small{padding:6px 10px;font-size:12.5px}.btn svg{width:16px;height:16px;flex:none}
 .toggle-relev{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 13px;cursor:pointer;background:var(--paper-2);}
 .toggle-relev.on{background:var(--brass-soft);border-color:var(--gold-line);color:#6d5518}
-.toggle-relev .dot{width:9px;height:9px;border-radius:50%;background:var(--line-2)}
-.toggle-relev.on .dot{background:var(--brass)}
-.count-line{font-size:12.5px;color:var(--ink-3);margin:0 2px 10px}
-.count-line b{color:var(--ink);font-family:var(--mono)}
+.toggle-relev .dot{width:9px;height:9px;border-radius:50%;background:var(--line-2)}.toggle-relev.on .dot{background:var(--brass)}
+.count-line{font-size:12.5px;color:var(--ink-3);margin:0 2px 10px}.count-line b{color:var(--ink);font-family:var(--mono)}
 .table-wrap{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper-2);box-shadow:var(--shadow-sm)}
 table.acervo{width:100%;border-collapse:collapse;font-size:13.5px}
 table.acervo thead th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);font-weight:700;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--paper-3);white-space:nowrap;}
 table.acervo tbody td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
 table.acervo tbody tr:last-child td{border-bottom:none}
-table.acervo tbody tr{cursor:pointer;transition:background .12s}
-table.acervo tbody tr:hover{background:var(--pine-soft)}
-.star{background:none;border:none;cursor:pointer;font-size:17px;line-height:1;padding:2px;color:var(--line-2)}
-.star.on{color:var(--brass)}
+table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbody tr:hover{background:var(--pine-soft)}
+.star{background:none;border:none;cursor:pointer;font-size:17px;line-height:1;padding:2px;color:var(--line-2)}.star.on{color:var(--brass)}
 .tipo-tag{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--pine);background:var(--pine-soft);border-radius:6px;padding:3px 7px;white-space:nowrap;display:inline-block;}
 .num-cell{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--ink)}
 .ramo-cell{font-size:12.5px;color:var(--ink-2)}
-.sit{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;letter-spacing:.02em}
-.sit.julgado{background:var(--pine-soft);color:var(--pine)}
-.sit.afetado{background:var(--brass-soft);color:#7a5f1a}
-.tese-cell{color:var(--ink);font-size:13px;line-height:1.55;white-space:pre-wrap;min-width:300px}
+.sit{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.sit.julgado{background:var(--pine-soft);color:var(--pine)}.sit.afetado{background:var(--brass-soft);color:#7a5f1a}
+.tese-cell{color:var(--ink);font-size:13px;line-height:1.55;white-space:pre-wrap;min-width:280px}
 .disp-cell{color:var(--ink-2);font-size:12.5px;white-space:pre-wrap}
+.inst-cell{display:flex;flex-wrap:wrap;gap:4px}
+.inst-tag{font-size:11px;background:var(--brass-soft);color:#6d5518;border:1px solid var(--gold-line);border-radius:6px;padding:2px 7px;white-space:nowrap}
 .row-actions{display:flex;gap:2px;justify-content:flex-end}
 .icon-btn{background:none;border:none;cursor:pointer;color:var(--ink-3);padding:5px;border-radius:7px;line-height:0}
-.icon-btn:hover{background:var(--paper-3);color:var(--ink)}
-.icon-btn svg{width:16px;height:16px}
+.icon-btn:hover{background:var(--paper-3);color:var(--ink)}.icon-btn svg{width:16px;height:16px}
 .empty{padding:60px 20px;text-align:center;color:var(--ink-3)}
-.empty h3{font-size:19px;color:var(--ink-2);margin-bottom:6px}
-.empty p{font-size:14px;max-width:420px;margin:0 auto 18px}
+.empty h3{font-size:19px;color:var(--ink-2);margin-bottom:6px}.empty p{font-size:14px;max-width:440px;margin:0 auto 18px}
 .overlay{position:fixed;inset:0;background:rgba(20,26,22,.44);backdrop-filter:blur(2px);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:32px 18px;overflow:auto}
 .overlay.open{display:flex}
 .modal{background:var(--paper-2);border-radius:16px;box-shadow:var(--shadow);width:100%;max-width:860px;border:1px solid var(--line);animation:pop .2s ease}
 @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
-.modal-head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}
-.modal-head h2{font-size:18px;flex:1}
+.modal-head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}.modal-head h2{font-size:18px;flex:1}
 .modal-body{padding:20px 22px;max-height:calc(100vh - 210px);overflow:auto}
 .modal-foot{padding:14px 22px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;background:var(--paper-3);border-radius:0 0 16px 16px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-grid .full{grid-column:1/-1}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.form-grid .full{grid-column:1/-1}
 .form-grid .field{display:flex;flex-direction:column;gap:5px}
 .form-grid .field label{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700}
-.form-grid input,.form-grid select,.form-grid textarea{width:100%}
-.hint{font-size:11.5px;color:var(--ink-3)}
+.form-grid input,.form-grid select,.form-grid textarea{width:100%}.hint{font-size:11.5px;color:var(--ink-3)}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .detail-block{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:var(--paper)}
 .detail-block .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);font-weight:700;margin-bottom:5px}
-.detail-block .v{font-size:14px;color:var(--ink);white-space:pre-wrap}
-.detail-block.full{grid-column:1/-1}
+.detail-block .v{font-size:14px;color:var(--ink);white-space:pre-wrap}.detail-block.full{grid-column:1/-1}
 .detail-block .v.serif{font-family:var(--serif);font-size:15.5px;line-height:1.55}
 .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);margin-bottom:18px}
-.panel h2{font-size:19px;margin-bottom:4px}
-.panel .lead{color:var(--ink-3);font-size:13.5px;margin-bottom:18px;max-width:720px}
+.panel h2{font-size:19px;margin-bottom:4px}.panel .lead{color:var(--ink-3);font-size:13.5px;margin-bottom:18px;max-width:720px}
 .ai-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
-.ai-paste textarea{width:100%;min-height:220px;font-size:14px}
+.ai-paste textarea{width:100%;min-height:200px;font-size:14px}
 .provider-pick{display:flex;gap:8px;margin-bottom:14px}
 .provider-pick button{flex:1;border:1px solid var(--line-2);background:var(--paper-2);border-radius:10px;padding:11px;cursor:pointer;font-weight:600;font-size:13.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:2px;align-items:flex-start}
 .provider-pick button small{font-weight:400;color:var(--ink-3);font-size:11px}
 .provider-pick button.sel{border-color:var(--pine);background:var(--pine-soft);color:var(--pine)}
-.ai-preview{margin-top:16px}
 .preview-card{border:1px solid var(--line);border-radius:11px;padding:13px 14px;margin-bottom:10px;background:var(--paper)}
 .preview-card .pc-top{display:flex;gap:9px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
 .preview-card .pc-tese{font-size:13px;color:var(--ink-2)}
-.status-msg{font-size:13px;padding:10px 13px;border-radius:9px;margin-top:12px;display:none}
-.status-msg.show{display:block}
-.status-msg.err{background:var(--danger-soft);color:var(--danger)}
-.status-msg.ok{background:var(--pine-soft);color:var(--pine)}
-.status-msg.work{background:var(--brass-soft);color:#7a5f1a}
+.status-msg{font-size:13px;padding:10px 13px;border-radius:9px;margin-top:12px;display:none}.status-msg.show{display:block}
+.status-msg.err{background:var(--danger-soft);color:var(--danger)}.status-msg.ok{background:var(--pine-soft);color:var(--pine)}.status-msg.work{background:var(--brass-soft);color:#7a5f1a}
 .ai-or{display:flex;align-items:center;gap:12px;margin:16px 0 12px;color:var(--ink-3);font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 .ai-or::before,.ai-or::after{content:"";flex:1;height:1px;background:var(--line)}
-.ai-pdf-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.ai-pdf-list .tag-pill{background:var(--pine-soft);border-color:var(--gold-line)}
+.ai-pdf-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.ai-pdf-list .tag-pill{background:var(--pine-soft);border-color:var(--gold-line)}
 .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
 .stat-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
-.stat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pine)}
-.stat-card.brass::before{background:var(--brass)}
-.stat-card .n{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--ink);line-height:1}
-.stat-card .l{font-size:12px;color:var(--ink-3);margin-top:6px;letter-spacing:.02em}
+.stat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--pine)}.stat-card.brass::before{background:var(--brass)}
+.stat-card .n{font-family:var(--mono);font-size:30px;font-weight:600;color:var(--ink);line-height:1}.stat-card .l{font-size:12px;color:var(--ink-3);margin-top:6px}
 .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .chart-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow-sm)}
 .chart-card h3{font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
@@ -153,21 +110,15 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
 .bar-fill{height:100%;background:linear-gradient(90deg,var(--pine),var(--pine-2));border-radius:6px;min-width:2px;transition:width .5s ease}
 .bar-fill.brass{background:linear-gradient(90deg,#b8912f,var(--brass))}
 .bar-row .bn{font-family:var(--mono);font-weight:600;color:var(--ink);text-align:right}
-.dash-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
-.dash-head h2{font-size:20px}
-.dash-head .meta{font-size:12.5px;color:var(--ink-3)}
-.dash-head .spacer{flex:1}
+.dash-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}.dash-head h2{font-size:20px}.dash-head .meta{font-size:12.5px;color:var(--ink-3)}.dash-head .spacer{flex:1}
 .cfg-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .cfg-block{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm)}
-.cfg-block h3{font-size:16px;margin-bottom:5px}
-.cfg-block p{font-size:13px;color:var(--ink-3);margin:0 0 16px}
-.cfg-block .field{margin-bottom:13px}
-.cfg-block .field label{display:block;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700}
+.cfg-block h3{font-size:16px;margin-bottom:5px}.cfg-block p{font-size:13px;color:var(--ink-3);margin:0 0 16px}
+.cfg-block .field{margin-bottom:13px}.cfg-block .field label{display:block;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700}
 .cfg-block input,.cfg-block select{width:100%}
 .tag-editor{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .tag-pill{display:inline-flex;align-items:center;gap:6px;background:var(--paper-3);border:1px solid var(--line-2);border-radius:999px;padding:4px 6px 4px 11px;font-size:12.5px}
-.tag-pill button{background:none;border:none;cursor:pointer;color:var(--ink-3);font-size:14px;line-height:1;padding:0 3px}
-.tag-pill button:hover{color:var(--danger)}
+.tag-pill button{background:none;border:none;cursor:pointer;color:var(--ink-3);font-size:14px;line-height:1;padding:0 3px}.tag-pill button:hover{color:var(--danger)}
 .file-drop{border:1.5px dashed var(--line-2);border-radius:11px;padding:20px;text-align:center;color:var(--ink-3);font-size:13px;cursor:pointer}
 .file-drop:hover{border-color:var(--pine);background:var(--pine-soft);color:var(--pine)}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#f0f2ee;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:90}
@@ -181,14 +132,8 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
 <header class="site">
   <div class="site-inner">
     <div class="seal">§</div>
-    <div class="brand">
-      <h1>Repertório de Precedentes Qualificados</h1>
-      <div class="sub">Repercussão Geral · Repetitivos · Súmulas · IAC · IRDR · PUIL · Enunciados CJF</div>
-    </div>
-    <div class="header-stats">
-      <span class="chip-stat">Acervo <b id="stat-total">0</b></span>
-      <span class="chip-stat">Relevantes <b id="stat-relev">0</b></span>
-    </div>
+    <div class="brand"><h1>Repertório de Precedentes Qualificados</h1><div class="sub">Repercussão Geral · Repetitivos · Súmulas · IAC · IRDR · PUIL · Enunciados CJF</div></div>
+    <div class="header-stats"><span class="chip-stat">Acervo <b id="stat-total">0</b></span><span class="chip-stat">Relevantes <b id="stat-relev">0</b></span></div>
   </div>
   <nav class="tabs">
     <button class="tab-btn active" data-tab="acervo">Acervo <span class="count" id="tabcount"></span></button>
@@ -200,45 +145,39 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
 <main>
   <section class="view active" id="view-acervo">
     <div class="toolbar">
-      <div class="field search-wrap"><label>Buscar</label><input type="search" id="f-search" placeholder="Tese, questão, relator, número, lei…" /></div>
+      <div class="field search-wrap"><label>Buscar</label><input type="search" id="f-search" placeholder="Tese, questão, relator, número, lei, instituto…" /></div>
+      <div class="field filter-min"><label>Tribunal</label><select id="f-tribunal"></select></div>
       <div class="field filter-min"><label>Tipo</label><select id="f-tipo"></select></div>
       <div class="field filter-min"><label>Ramo</label><select id="f-ramo"></select></div>
       <div class="field filter-min"><label>Situação</label><select id="f-situacao"><option value="">Todas</option><option>Afetado</option><option>Julgado</option></select></div>
       <div class="field filter-min"><label>Ano trânsito</label><select id="f-ano"></select></div>
       <div class="field filter-min"><label>Lei</label><select id="f-lei"></select></div>
-      <div class="field filter-min"><label>Ordenar por</label>
-        <select id="f-sort">
-          <option value="recent">Recentes</option>
-          <option value="tribunal">Tribunal</option>
-          <option value="numero">Número</option>
-          <option value="transito">Trânsito em julgado</option>
-        </select>
-      </div>
-      <div class="field" style="align-self:flex-end"><button class="btn small" id="f-dir" title="Inverter ordem (crescente/decrescente)">↓</button></div>
+      <div class="field filter-min"><label>Instituto jurídico</label><select id="f-instituto"></select></div>
+      <div class="field filter-min"><label>Ordenar por</label><select id="f-sort"><option value="recent">Recentes</option><option value="tribunal">Tribunal</option><option value="numero">Número</option><option value="transito">Trânsito em julgado</option></select></div>
+      <div class="field" style="align-self:flex-end"><button class="btn small" id="f-dir" title="Inverter ordem">↓</button></div>
       <div class="field" style="align-self:flex-end"><button class="toggle-relev" id="f-relev"><span class="dot"></span> Só relevantes</button></div>
-      <div class="field" style="align-self:flex-end;margin-left:auto">
-        <button class="btn primary" id="btn-novo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg> Novo precedente</button>
-      </div>
+      <div class="field" style="align-self:flex-end;margin-left:auto"><button class="btn primary" id="btn-novo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg> Novo precedente</button></div>
     </div>
     <div class="count-line" id="count-line"></div>
     <div class="table-wrap">
       <table class="acervo">
         <thead><tr>
           <th style="width:34px"></th>
-          <th style="width:112px">Tipo</th>
-          <th style="width:66px">Tribunal</th>
-          <th style="width:92px">Número</th>
-          <th class="hide-sm" style="width:150px">Ramo</th>
-          <th style="width:100px">Situação</th>
+          <th style="width:110px">Tipo</th>
+          <th style="width:64px">Tribunal</th>
+          <th style="width:90px">Número</th>
+          <th class="hide-sm" style="width:140px">Ramo</th>
+          <th style="width:96px">Situação</th>
           <th>Tese firmada</th>
-          <th class="hide-sm" style="width:170px">Dispositivos</th>
-          <th style="width:90px"></th>
+          <th class="hide-sm" style="width:150px">Dispositivos</th>
+          <th class="hide-sm" style="width:180px">Institutos jurídicos</th>
+          <th style="width:84px"></th>
         </tr></thead>
         <tbody id="acervo-body"></tbody>
       </table>
       <div class="empty" id="acervo-empty" hidden>
         <h3>Nenhum precedente encontrado</h3>
-        <p>Cadastre manualmente pelo botão “Novo precedente”, ou cole um texto na aba “Importar com IA” para que a inteligência artificial classifique e insira automaticamente.</p>
+        <p>Cadastre pelo botão “Novo precedente”, ou cole um texto na aba “Importar com IA”.</p>
         <button class="btn primary" onclick="openForm()">Cadastrar o primeiro</button>
       </div>
     </div>
@@ -247,27 +186,20 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
   <section class="view" id="view-ia">
     <div class="panel">
       <h2>Importar com inteligência artificial</h2>
-      <p class="lead">Cole abaixo o texto bruto de um ou de vários precedentes (ou enunciados de Jornada do CJF), ou envie tabelas em PDF. A IA extrai os campos, classifica o ramo do direito e insere no acervo para sua revisão. As chaves de API são configuradas na aba “Backup &amp; API”.</p>
+      <p class="lead">Cole o texto bruto de precedentes ou enunciados do CJF, ou envie tabelas em PDF. A IA extrai os campos, classifica o ramo e os institutos jurídicos e insere para revisão. As chaves de API ficam na aba “Backup &amp; API”.</p>
       <div class="ai-grid">
         <div class="ai-paste">
-          <div class="provider-pick">
-            <button data-prov="gemini" class="sel"><span>Google Gemini</span><small>generativelanguage API</small></button>
-            <button data-prov="claude"><span>Anthropic Claude</span><small>Messages API</small></button>
-          </div>
-          <div class="field" style="margin-bottom:14px">
-            <label style="display:block;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700">Modelo da IA</label>
-            <select id="ai-model-sel" style="width:100%"></select>
-            <input type="text" id="ai-model-custom" placeholder="digite o identificador do modelo" style="width:100%;margin-top:6px" hidden />
-          </div>
-          <textarea id="ai-input" placeholder="Ex.: Tema 1234/STF. Relator Min. Fulano. RE 1.000.000. Questão: definir se... Tese firmada: '...'. Trânsito em julgado em 10/03/2024.  —  ou  —  Enunciado 12 da III Jornada de Direito Civil: '...'"></textarea>
-          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
-            <button class="btn primary" id="btn-ia-run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" stroke-linejoin="round"/></svg> Analisar texto</button>
-            <button class="btn ghost" id="btn-ia-clear">Limpar</button>
-          </div>
+          <div class="provider-pick"><button data-prov="gemini" class="sel"><span>Google Gemini</span><small>generativelanguage API</small></button><button data-prov="claude"><span>Anthropic Claude</span><small>Messages API</small></button></div>
+          <div class="field" style="margin-bottom:14px"><label style="display:block;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700">Modelo da IA</label><select id="ai-model-sel" style="width:100%"></select><input type="text" id="ai-model-custom" placeholder="digite o identificador do modelo" style="width:100%;margin-top:6px" hidden /></div>
+          <textarea id="ai-input" placeholder="Ex.: Tema 1234/STF. Relator Min. Fulano. RE 1.000.000. Tese firmada: '...'. Trânsito em 10/03/2024. — ou — Enunciado 12 da III Jornada de Direito Civil: '...'"></textarea>
+          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><button class="btn primary" id="btn-ia-run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" stroke-linejoin="round"/></svg> Analisar texto</button><button class="btn ghost" id="btn-ia-clear">Limpar</button></div>
           <div class="ai-or"><span>ou envie tabelas em PDF</span></div>
-          <div class="file-drop" id="ai-pdf-drop">Clique ou arraste PDFs aqui — ideal para inserir muitos temas de uma vez<input type="file" id="ai-pdf" accept="application/pdf,.pdf" multiple hidden /></div>
+          <div class="file-drop" id="ai-pdf-drop">Clique ou arraste PDFs aqui — muitos temas de uma vez<input type="file" id="ai-pdf" accept="application/pdf,.pdf" multiple hidden /></div>
           <div class="ai-pdf-list" id="ai-pdf-list"></div>
           <button class="btn primary" id="btn-ia-pdf" style="margin-top:10px" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" stroke-linejoin="round"/></svg> Analisar PDF e extrair temas</button>
+          <div class="ai-or"><span>classificar acervo existente</span></div>
+          <p class="hint" style="margin-bottom:8px">Percorre os precedentes já cadastrados que ainda não têm institutos jurídicos e os classifica com a IA.</p>
+          <button class="btn" id="btn-ia-institutos">Classificar institutos dos já cadastrados</button>
           <div class="status-msg" id="ai-status"></div>
         </div>
         <div><div class="ai-preview" id="ai-preview"><p class="hint">Os precedentes reconhecidos aparecerão aqui para revisão. Nada é gravado até você confirmar.</p></div></div>
@@ -276,19 +208,15 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
   </section>
 
   <section class="view" id="view-paineis">
-    <div class="dash-head">
-      <h2>Painéis de visualização</h2>
-      <span class="meta" id="dash-scope"></span>
-      <div class="spacer"></div>
-      <button class="btn small" id="btn-dash-refilter">Aplicar filtros do acervo</button>
-      <button class="btn small primary" id="btn-export-doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" stroke-linejoin="round"/></svg> Exportar para .doc (Word)</button>
-    </div>
+    <div class="dash-head"><h2>Painéis de visualização</h2><span class="meta" id="dash-scope"></span><div class="spacer"></div><button class="btn small" id="btn-dash-refilter">Aplicar filtros do acervo</button><button class="btn small primary" id="btn-export-doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" stroke-linejoin="round"/></svg> Exportar para .doc</button></div>
     <div class="stat-cards" id="stat-cards"></div>
     <div class="charts-grid">
+      <div class="chart-card"><h3>Por tribunal <span class="n" id="cn-trib"></span></h3><div id="chart-trib"></div></div>
       <div class="chart-card"><h3>Por ramo do direito <span class="n" id="cn-ramo"></span></h3><div id="chart-ramo"></div></div>
+      <div class="chart-card"><h3>Por instituto jurídico <span class="n" id="cn-inst"></span></h3><div id="chart-inst"></div></div>
       <div class="chart-card"><h3>Por tipo de precedente <span class="n" id="cn-tipo"></span></h3><div id="chart-tipo"></div></div>
       <div class="chart-card"><h3>Por situação <span class="n" id="cn-sit"></span></h3><div id="chart-sit"></div></div>
-      <div class="chart-card"><h3>Por ano do trânsito em julgado <span class="n" id="cn-ano"></span></h3><div id="chart-ano"></div></div>
+      <div class="chart-card"><h3>Por ano do trânsito <span class="n" id="cn-ano"></span></h3><div id="chart-ano"></div></div>
       <div class="chart-card"><h3>Por lei / diploma <span class="n" id="cn-lei"></span></h3><div id="chart-lei"></div></div>
     </div>
   </section>
@@ -297,94 +225,57 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
     <div class="cfg-grid">
       <div class="cfg-block">
         <h3>Cópia de segurança</h3>
-        <p>Baixe um arquivo com todo o acervo. Guarde-o para nunca perder os dados. Para restaurar, carregue o arquivo de volta.</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
-          <button class="btn primary" id="btn-export-json"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Baixar backup (.json)</button>
-          <button class="btn" id="btn-export-csv">Exportar planilha (.csv)</button>
-        </div>
-        <div class="file-drop" id="drop-json">Carregar backup (.json) — clique ou arraste o arquivo aqui<input type="file" id="file-json" accept=".json,application/json" hidden /></div>
-        <div class="hint" style="margin-top:8px">Ao restaurar, você escolhe se deseja substituir ou mesclar com o acervo atual.</div>
+        <p>Baixe um arquivo com todo o acervo. Para restaurar, carregue-o de volta.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px"><button class="btn primary" id="btn-export-json"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke-linecap="round" stroke-linejoin="round"/></svg> Baixar backup (.json)</button><button class="btn" id="btn-export-csv">Exportar planilha (.csv)</button></div>
+        <div class="file-drop" id="drop-json">Carregar backup (.json) — clique ou arraste<input type="file" id="file-json" accept=".json,application/json" hidden /></div>
       </div>
       <div class="cfg-block">
         <h3>Chaves de API</h3>
-        <p>Guardadas somente neste navegador. Nunca são enviadas para lugar algum além do provedor escolhido.</p>
+        <p>Guardadas somente neste navegador.</p>
         <div class="field"><label>Chave Google Gemini</label><input type="password" id="cfg-gemini-key" placeholder="AIza…" /></div>
-        <div class="field"><label>Modelo Gemini</label><select id="cfg-gemini-model-sel"></select><input type="text" id="cfg-gemini-model-custom" placeholder="digite o identificador do modelo" style="margin-top:6px" hidden /></div>
+        <div class="field"><label>Modelo Gemini</label><select id="cfg-gemini-model-sel"></select><input type="text" id="cfg-gemini-model-custom" placeholder="modelo" style="margin-top:6px" hidden /></div>
         <div class="field"><label>Chave Anthropic Claude</label><input type="password" id="cfg-claude-key" placeholder="sk-ant-…" /></div>
-        <div class="field"><label>Modelo Claude</label><select id="cfg-claude-model-sel"></select><input type="text" id="cfg-claude-model-custom" placeholder="digite o identificador do modelo" style="margin-top:6px" hidden /></div>
+        <div class="field"><label>Modelo Claude</label><select id="cfg-claude-model-sel"></select><input type="text" id="cfg-claude-model-custom" placeholder="modelo" style="margin-top:6px" hidden /></div>
         <button class="btn primary" id="btn-save-keys">Salvar configurações</button>
-        <div class="hint" style="margin-top:10px">A chamada ao Claude a partir de arquivo local pode ser bloqueada pelo navegador (CORS). Se ocorrer, use o Gemini.</div>
+        <div class="hint" style="margin-top:10px">A chamada ao Claude a partir de arquivo local pode ser bloqueada por CORS; se ocorrer, use o Gemini.</div>
       </div>
-      <div class="cfg-block">
-        <h3>Tipos de precedente</h3>
-        <p>Personalize a lista. O tipo padrão em novos cadastros é “Tema”.</p>
-        <div style="display:flex;gap:8px"><input type="text" id="new-tipo" placeholder="Novo tipo…" style="flex:1" /><button class="btn" id="add-tipo">Adicionar</button></div>
-        <div class="tag-editor" id="tipos-editor"></div>
-      </div>
-      <div class="cfg-block">
-        <h3>Ramos do direito</h3>
-        <p>Personalize a lista usada na classificação e nos painéis.</p>
-        <div style="display:flex;gap:8px"><input type="text" id="new-ramo" placeholder="Novo ramo…" style="flex:1" /><button class="btn" id="add-ramo">Adicionar</button></div>
-        <div class="tag-editor" id="ramos-editor"></div>
-      </div>
-      <div class="cfg-block">
-        <h3>Tribunais / órgãos</h3>
-        <p>Lista usada no cadastro e na classificação por IA.</p>
-        <div style="display:flex;gap:8px"><input type="text" id="new-tribunal" placeholder="Novo tribunal…" style="flex:1" /><button class="btn" id="add-tribunal">Adicionar</button></div>
-        <div class="tag-editor" id="tribunais-editor"></div>
-      </div>
-      <div class="cfg-block">
-        <h3>Jornadas do CJF</h3>
-        <p>Jornadas temáticas cujos enunciados podem ser cadastrados. Inclua outras conforme necessário.</p>
-        <div style="display:flex;gap:8px"><input type="text" id="new-jornada" placeholder="Nova jornada…" style="flex:1" /><button class="btn" id="add-jornada">Adicionar</button></div>
-        <div class="tag-editor" id="jornadas-editor"></div>
-      </div>
+      <div class="cfg-block"><h3>Tipos de precedente</h3><p>Padrão em novos cadastros: “Tema”.</p><div style="display:flex;gap:8px"><input type="text" id="new-tipo" placeholder="Novo tipo…" style="flex:1" /><button class="btn" id="add-tipo">Adicionar</button></div><div class="tag-editor" id="tipos-editor"></div></div>
+      <div class="cfg-block"><h3>Ramos do direito</h3><p>Usado na classificação e nos painéis.</p><div style="display:flex;gap:8px"><input type="text" id="new-ramo" placeholder="Novo ramo…" style="flex:1" /><button class="btn" id="add-ramo">Adicionar</button></div><div class="tag-editor" id="ramos-editor"></div></div>
+      <div class="cfg-block"><h3>Tribunais / órgãos</h3><p>Ex.: STF, STJ, TJSC, TRF4…</p><div style="display:flex;gap:8px"><input type="text" id="new-tribunal" placeholder="Novo tribunal…" style="flex:1" /><button class="btn" id="add-tribunal">Adicionar</button></div><div class="tag-editor" id="tribunais-editor"></div></div>
+      <div class="cfg-block"><h3>Jornadas do CJF</h3><p>Inclua outras jornadas conforme necessário.</p><div style="display:flex;gap:8px"><input type="text" id="new-jornada" placeholder="Nova jornada…" style="flex:1" /><button class="btn" id="add-jornada">Adicionar</button></div><div class="tag-editor" id="jornadas-editor"></div></div>
     </div>
-    <div class="cfg-block" style="margin-top:18px">
-      <h3 style="color:var(--danger)">Zona de risco</h3>
-      <p>Apaga permanentemente todos os precedentes deste navegador. Faça um backup antes.</p>
-      <button class="btn danger" id="btn-wipe">Apagar todo o acervo</button>
-    </div>
+    <div class="cfg-block" style="margin-top:18px"><h3 style="color:var(--danger)">Zona de risco</h3><p>Apaga todos os precedentes deste navegador. Faça backup antes.</p><button class="btn danger" id="btn-wipe">Apagar todo o acervo</button></div>
   </section>
 </main>
 
-<div class="overlay" id="overlay-form">
-  <div class="modal">
-    <div class="modal-head"><h2 id="form-title">Novo precedente</h2><button class="icon-btn" onclick="closeForm()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>
-    <div class="modal-body">
-      <div class="form-grid">
-        <div class="field"><label>Tipo de precedente</label><select id="i-tipo"></select></div>
-        <div class="field"><label>Ramo do direito</label><select id="i-ramo"></select></div>
-        <div class="field"><label>Tribunal / órgão</label><select id="i-tribunal"></select></div>
-        <div class="field"><label>Jornada (Enunciados do CJF)</label><select id="i-jornada"></select></div>
-        <div class="field"><label>Número (tema / súmula / enunciado)</label><input type="text" id="i-numero" placeholder="Ex.: 1234" /></div>
-        <div class="field"><label>Número do recurso paradigma</label><input type="text" id="i-recurso" placeholder="Ex.: RE 1.000.000 / REsp 1.234.567" /></div>
-        <div class="field"><label>Relator</label><input type="text" id="i-relator" placeholder="Ex.: Min. Fulano de Tal" /></div>
-        <div class="field"><label>Situação</label><select id="i-situacao"><option>Julgado</option><option>Afetado</option></select></div>
-        <div class="field"><label>Data do trânsito em julgado</label><input type="date" id="i-transito" /></div>
-        <div class="field full"><label>Questão submetida a julgamento / descrição</label><textarea id="i-questao" rows="3"></textarea></div>
-        <div class="field full"><label>Tese firmada / texto do enunciado</label><textarea id="i-tese" rows="4"></textarea></div>
-        <div class="field full"><label>Dispositivos de lei referidos</label><input type="text" id="i-dispositivos" placeholder="Ex.: art. 5º, XXXV, CF; art. 1.015 CPC" /></div>
-        <div class="field full"><label>Leis referidas (usado no filtro por lei)</label><input type="text" id="i-leis" placeholder="Ex.: CF; CPC; Código Civil — em branco, deriva dos dispositivos" /></div>
-        <div class="field full"><label>Informações complementares</label><textarea id="i-info" rows="3"></textarea></div>
-        <div class="field full"><label>Relevância</label><button class="toggle-relev" id="i-relev-toggle" type="button"><span class="dot"></span> Marcar como relevante para meu trabalho/estudo</button></div>
-      </div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn danger" id="btn-form-del" hidden>Excluir</button>
-      <button class="btn ghost" onclick="closeForm()">Cancelar</button>
-      <button class="btn primary" id="btn-form-save">Salvar</button>
-    </div>
-  </div>
-</div>
+<div class="overlay" id="overlay-form"><div class="modal">
+  <div class="modal-head"><h2 id="form-title">Novo precedente</h2><button class="icon-btn" onclick="closeForm()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>
+  <div class="modal-body"><div class="form-grid">
+    <div class="field"><label>Tipo de precedente</label><select id="i-tipo"></select></div>
+    <div class="field"><label>Ramo do direito</label><select id="i-ramo"></select></div>
+    <div class="field"><label>Tribunal / órgão</label><select id="i-tribunal"></select></div>
+    <div class="field"><label>Jornada (Enunciados do CJF)</label><select id="i-jornada"></select></div>
+    <div class="field"><label>Número (tema / súmula / enunciado)</label><input type="text" id="i-numero" placeholder="Ex.: 1234" /></div>
+    <div class="field"><label>Número do recurso paradigma</label><input type="text" id="i-recurso" placeholder="Ex.: RE 1.000.000" /></div>
+    <div class="field"><label>Relator</label><input type="text" id="i-relator" placeholder="Ex.: Min. Fulano de Tal" /></div>
+    <div class="field"><label>Situação</label><select id="i-situacao"><option>Julgado</option><option>Afetado</option></select></div>
+    <div class="field"><label>Data do trânsito em julgado</label><input type="date" id="i-transito" /></div>
+    <div class="field full"><label>Questão submetida a julgamento / descrição</label><textarea id="i-questao" rows="3"></textarea></div>
+    <div class="field full"><label>Tese firmada / texto do enunciado</label><textarea id="i-tese" rows="4"></textarea></div>
+    <div class="field full"><label>Dispositivos de lei referidos</label><input type="text" id="i-dispositivos" placeholder="Ex.: art. 5º, XXXV, CF; art. 85 CPC" /></div>
+    <div class="field full"><label>Leis referidas (filtro por lei)</label><input type="text" id="i-leis" placeholder="Ex.: CF; CPC; Código Civil — em branco, deriva dos dispositivos" /></div>
+    <div class="field full"><label>Institutos jurídicos (filtro por instituto)</label><input type="text" id="i-institutos" placeholder="Ex.: honorários advocatícios; sucumbência; prescrição — separe por ponto e vírgula" /></div>
+    <div class="field full"><label>Informações complementares</label><textarea id="i-info" rows="3"></textarea></div>
+    <div class="field full"><label>Relevância</label><button class="toggle-relev" id="i-relev-toggle" type="button"><span class="dot"></span> Marcar como relevante</button></div>
+  </div></div>
+  <div class="modal-foot"><button class="btn danger" id="btn-form-del" hidden>Excluir</button><button class="btn ghost" onclick="closeForm()">Cancelar</button><button class="btn primary" id="btn-form-save">Salvar</button></div>
+</div></div>
 
-<div class="overlay" id="overlay-detail">
-  <div class="modal">
-    <div class="modal-head"><span class="tipo-tag" id="d-tipo"></span><h2 id="d-title" style="flex:1"></h2><button class="star" id="d-star" title="Relevância">★</button><button class="icon-btn" onclick="closeDetail()" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>
-    <div class="modal-body"><div class="detail-grid" id="detail-grid"></div></div>
-    <div class="modal-foot"><button class="btn ghost" id="d-dup">Duplicar</button><button class="btn danger" id="d-del">Excluir</button><button class="btn primary" id="d-edit">Editar</button></div>
-  </div>
-</div>
+<div class="overlay" id="overlay-detail"><div class="modal">
+  <div class="modal-head"><span class="tipo-tag" id="d-tipo"></span><h2 id="d-title" style="flex:1"></h2><button class="star" id="d-star" title="Relevância">★</button><button class="icon-btn" onclick="closeDetail()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>
+  <div class="modal-body"><div class="detail-grid" id="detail-grid"></div></div>
+  <div class="modal-foot"><button class="btn ghost" id="d-dup">Duplicar</button><button class="btn danger" id="d-del">Excluir</button><button class="btn primary" id="d-edit">Editar</button></div>
+</div></div>
 
 <div class="toast" id="toast"></div>
 
@@ -392,26 +283,17 @@ table.acervo tbody tr:hover{background:var(--pine-soft)}
 const LS_DATA='repertorio_precedentes_v1', LS_CFG='repertorio_cfg_v1';
 const DEFAULT_TIPOS=['Tema','Tema Repetitivo','Súmula Vinculante','Súmula','IAC','IRDR','PUIL','Enunciado (CJF)','Outro'];
 const DEFAULT_RAMOS=['Direito Constitucional','Direito Administrativo','Direito Tributário','Direito Civil','Direito Processual Civil','Direito Penal','Direito Processual Penal','Direito do Trabalho','Direito Processual do Trabalho','Direito Previdenciário','Direito do Consumidor','Direito Empresarial','Direito Ambiental','Direito de Família e Sucessões','Direito Eleitoral','Direito Internacional','Outro'];
-const DEFAULT_TRIBUNAIS=['STF','STJ','TST','TNU','TSE','TJ','TRF','CJF','Outro'];
+const DEFAULT_TRIBUNAIS=['STF','STJ','TST','TNU','TSE','TJSC','TRF4','CJF','Outro'];
 const DEFAULT_JORNADAS=['Jornada de Direito Civil','Jornada de Direito Comercial','Jornada de Direito Processual Civil','Jornada de Direito e Processo Penal','Jornada de Direito Administrativo','Jornada de Direito da Saúde','Jornada de Prevenção e Solução Extrajudicial de Litígios','Jornada de Direito Notarial e Registral','Jornada de Direito Previdenciário','Jornada de Direito e Agronegócio'];
 const GEMINI_MODELS=['gemini-3.5-flash','gemini-3-flash','gemini-3.1-pro-preview','gemini-3.1-flash-lite','gemini-2.5-flash','gemini-2.5-flash-lite','gemini-2.5-pro'];
 const CLAUDE_MODELS=['claude-opus-4-8','claude-sonnet-5','claude-sonnet-4-6','claude-haiku-4-5-20251001','claude-fable-5','claude-opus-4-7'];
 const CUSTOM_MODEL='__custom__';
-
 let state={records:[]};
 let cfg={tipos:[...DEFAULT_TIPOS],ramos:[...DEFAULT_RAMOS],tribunais:[...DEFAULT_TRIBUNAIS],jornadas:[...DEFAULT_JORNADAS],geminiKey:'',geminiModel:'gemini-2.5-flash',claudeKey:'',claudeModel:'claude-sonnet-4-6',provider:'gemini'};
-let aiPreviewRecords=[], editingId=null, formRelev=false, relevFilter=false, detailId=null, dashScopeIsFiltered=true, loadedPdfs=[];
-let sortField='recent', sortDir='desc';
+let aiPreviewRecords=[], editingId=null, formRelev=false, relevFilter=false, detailId=null, dashScopeIsFiltered=true, loadedPdfs=[], sortField='recent', sortDir='desc';
 
-function load(){
-  try{const d=JSON.parse(localStorage.getItem(LS_DATA));if(d&&Array.isArray(d.records))state=d;}catch(e){}
-  try{const c=JSON.parse(localStorage.getItem(LS_CFG));if(c)cfg=Object.assign(cfg,c);}catch(e){}
-  if(!cfg.tipos||!cfg.tipos.length)cfg.tipos=[...DEFAULT_TIPOS];
-  if(!cfg.ramos||!cfg.ramos.length)cfg.ramos=[...DEFAULT_RAMOS];
-  if(!cfg.tribunais||!cfg.tribunais.length)cfg.tribunais=[...DEFAULT_TRIBUNAIS];
-  if(!cfg.jornadas||!cfg.jornadas.length)cfg.jornadas=[...DEFAULT_JORNADAS];
-}
-function saveData(){try{localStorage.setItem(LS_DATA,JSON.stringify(state));}catch(e){toast('Não foi possível gravar localmente.');}}
+function load(){try{const d=JSON.parse(localStorage.getItem(LS_DATA));if(d&&Array.isArray(d.records))state=d;}catch(e){}try{const c=JSON.parse(localStorage.getItem(LS_CFG));if(c)cfg=Object.assign(cfg,c);}catch(e){}if(!cfg.tipos||!cfg.tipos.length)cfg.tipos=[...DEFAULT_TIPOS];if(!cfg.ramos||!cfg.ramos.length)cfg.ramos=[...DEFAULT_RAMOS];if(!cfg.tribunais||!cfg.tribunais.length)cfg.tribunais=[...DEFAULT_TRIBUNAIS];if(!cfg.jornadas||!cfg.jornadas.length)cfg.jornadas=[...DEFAULT_JORNADAS];}
+function saveData(){try{localStorage.setItem(LS_DATA,JSON.stringify(state));}catch(e){toast('Não foi possível gravar.');}}
 function saveCfg(){try{localStorage.setItem(LS_CFG,JSON.stringify(cfg));}catch(e){}}
 function uid(){return 'p_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
 function esc(s){return (s==null?'':String(s)).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
@@ -420,11 +302,10 @@ function fmtDate(iso){if(!iso)return '—';const p=iso.split('-');return p.lengt
 function yearOf(iso){if(!iso)return null;const p=(''+iso).split('-');return p[0]||null;}
 function normLaw(t){t=(t||'').replace(/\s+/g,' ').trim();if(!t)return '';const base=t.replace(/\/\d{2,4}$/,'');if(/^[A-Za-zÇç]{1,6}$/.test(base))return base.toUpperCase();return t;}
 function parseLaws(text){if(!text)return [];const out=new Set();(text.match(/\b(CF|CRFB|CPC|CC|CP|CPP|CLT|CTN|CDC|CTB|ECA|LINDB|ADCT|LEP|LC|CE)\b(\/\d{2,4})?/gi)||[]).forEach(m=>out.add(normLaw(m)));(text.match(/lei(?:\s+complementar)?\s*(?:n?[ºo.]+\s*)?[\d.]+(?:\/\d{2,4})?/gi)||[]).forEach(m=>out.add(m.replace(/\s+/g,' ').trim()));(text.match(/c[óo]digo\s+[a-zàáâãçéíóôõú]+/gi)||[]).forEach(m=>out.add(m.replace(/\s+/g,' ').replace(/^./,c=>c.toUpperCase())));if(/constitui[çc][ãa]o/i.test(text))out.add('CF');return [...out];}
-function splitLaws(s){return (s||'').split(/[;,]/).map(x=>x.trim()).filter(Boolean);}
-function recordLaws(r){const ex=splitLaws(r.leis).map(normLaw).filter(Boolean);if(ex.length)return [...new Set(ex)];return [...new Set(parseLaws(r.dispositivos||'').map(normLaw).filter(Boolean))];}
-function normalizeRecord(r){
-  return {id:r.id||uid(),tipo:r.tipo||'Tema',tribunal:r.tribunal||'',jornada:r.jornada||'',numero:r.numero||'',recurso:r.recurso||'',relator:r.relator||'',questao:r.questao||'',tese:r.tese||'',transito:r.transito||'',info:r.info||'',situacao:(r.situacao==='Afetado'?'Afetado':'Julgado'),dispositivos:r.dispositivos||'',leis:Array.isArray(r.leis)?r.leis.join('; '):(r.leis||''),ramo:r.ramo||'',relevante:!!r.relevante,createdAt:r.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};
-}
+function splitList(s){return (s||'').split(/[;,]/).map(x=>x.trim()).filter(Boolean);}
+function recordLaws(r){const ex=splitList(r.leis).map(normLaw).filter(Boolean);if(ex.length)return [...new Set(ex)];return [...new Set(parseLaws(r.dispositivos||'').map(normLaw).filter(Boolean))];}
+function recordInstitutos(r){return [...new Set(splitList(r.institutos))];}
+function normalizeRecord(r){return {id:r.id||uid(),tipo:r.tipo||'Tema',tribunal:r.tribunal||'',jornada:r.jornada||'',numero:r.numero||'',recurso:r.recurso||'',relator:r.relator||'',questao:r.questao||'',tese:r.tese||'',transito:r.transito||'',info:r.info||'',situacao:(r.situacao==='Afetado'?'Afetado':'Julgado'),dispositivos:r.dispositivos||'',leis:Array.isArray(r.leis)?r.leis.join('; '):(r.leis||''),institutos:Array.isArray(r.institutos)?r.institutos.join('; '):(r.institutos||''),ramo:r.ramo||'',relevante:!!r.relevante,createdAt:r.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
 
 document.querySelectorAll('.tab-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('view-'+b.dataset.tab).classList.add('active');if(b.dataset.tab==='paineis')renderDashboard();});});
 
@@ -436,14 +317,17 @@ function refreshSelects(){
   fillSelect(document.getElementById('i-ramo'),['— não classificado —',...cfg.ramos]);
   fillSelect(document.getElementById('i-tribunal'),cfg.tribunais,{includeAll:true,allLabel:'—'});
   fillSelect(document.getElementById('i-jornada'),cfg.jornadas,{includeAll:true,allLabel:'— não se aplica —'});
+  const tribs=[...new Set(state.records.map(r=>r.tribunal).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt'));
+  fillSelect(document.getElementById('f-tribunal'),tribs,{includeAll:true,allLabel:'Todos'});
   const anos=[...new Set(state.records.map(r=>yearOf(r.transito)).filter(Boolean))].sort((a,b)=>b-a);
   fillSelect(document.getElementById('f-ano'),anos,{includeAll:true,allLabel:'Todos'});
   const leis=[...new Set(state.records.flatMap(recordLaws))].sort((a,b)=>a.localeCompare(b,'pt'));
   fillSelect(document.getElementById('f-lei'),leis,{includeAll:true,allLabel:'Todas'});
+  const insts=[...new Set(state.records.flatMap(recordInstitutos))].sort((a,b)=>a.localeCompare(b,'pt'));
+  fillSelect(document.getElementById('f-instituto'),insts,{includeAll:true,allLabel:'Todos'});
 }
-
-function currentFilters(){return {q:document.getElementById('f-search').value.trim().toLowerCase(),tipo:document.getElementById('f-tipo').value,ramo:document.getElementById('f-ramo').value,situacao:document.getElementById('f-situacao').value,ano:document.getElementById('f-ano').value,lei:document.getElementById('f-lei').value,relev:relevFilter};}
-function applyFilters(list){const f=currentFilters();return list.filter(r=>{if(f.relev&&!r.relevante)return false;if(f.tipo&&r.tipo!==f.tipo)return false;if(f.ramo&&r.ramo!==f.ramo)return false;if(f.situacao&&r.situacao!==f.situacao)return false;if(f.ano&&yearOf(r.transito)!==f.ano)return false;if(f.lei&&!recordLaws(r).includes(f.lei))return false;if(f.q){const hay=[r.tipo,r.numero,r.recurso,r.relator,r.questao,r.tese,r.dispositivos,r.leis,r.info,r.ramo,r.tribunal,r.jornada].join(' ').toLowerCase();if(!hay.includes(f.q))return false;}return true;});}
+function currentFilters(){return {q:document.getElementById('f-search').value.trim().toLowerCase(),tribunal:document.getElementById('f-tribunal').value,tipo:document.getElementById('f-tipo').value,ramo:document.getElementById('f-ramo').value,situacao:document.getElementById('f-situacao').value,ano:document.getElementById('f-ano').value,lei:document.getElementById('f-lei').value,instituto:document.getElementById('f-instituto').value,relev:relevFilter};}
+function applyFilters(list){const f=currentFilters();return list.filter(r=>{if(f.relev&&!r.relevante)return false;if(f.tribunal&&r.tribunal!==f.tribunal)return false;if(f.tipo&&r.tipo!==f.tipo)return false;if(f.ramo&&r.ramo!==f.ramo)return false;if(f.situacao&&r.situacao!==f.situacao)return false;if(f.ano&&yearOf(r.transito)!==f.ano)return false;if(f.lei&&!recordLaws(r).includes(f.lei))return false;if(f.instituto&&!recordInstitutos(r).includes(f.instituto))return false;if(f.q){const hay=[r.tipo,r.numero,r.recurso,r.relator,r.questao,r.tese,r.dispositivos,r.leis,r.institutos,r.info,r.ramo,r.tribunal,r.jornada].join(' ').toLowerCase();if(!hay.includes(f.q))return false;}return true;});}
 function numKey(v){const m=(''+(v||'')).replace(/\./g,'').match(/\d+/);return m?parseInt(m[0],10):Number.POSITIVE_INFINITY;}
 function sortRecords(list){const dir=sortDir==='asc'?1:-1;return list.slice().sort((a,b)=>{let r=0;if(sortField==='tribunal')r=(a.tribunal||'\uffff').localeCompare(b.tribunal||'\uffff','pt');else if(sortField==='numero')r=(numKey(a.numero)-numKey(b.numero))||((''+(a.numero||'')).localeCompare(''+(b.numero||''),'pt',{numeric:true}));else if(sortField==='transito')r=(a.transito||'9999-99-99').localeCompare(b.transito||'9999-99-99');else r=(a.updatedAt||'').localeCompare(b.updatedAt||'');if(r===0)r=(a.updatedAt||'').localeCompare(b.updatedAt||'');return r*dir;});}
 function updateDirBtn(){const b=document.getElementById('f-dir');if(b)b.textContent=sortDir==='asc'?'↑':'↓';}
@@ -455,6 +339,7 @@ function renderAcervo(){
   document.getElementById('acervo-empty').hidden=list.length>0;
   document.querySelector('.table-wrap table').style.display=list.length?'':'none';
   list.forEach(r=>{
+    const insts=recordInstitutos(r);
     const tr=document.createElement('tr');
     tr.innerHTML=`
       <td><button class="star ${r.relevante?'on':''}" data-star="${r.id}" title="Relevância">★</button></td>
@@ -465,6 +350,7 @@ function renderAcervo(){
       <td><span class="sit ${r.situacao==='Julgado'?'julgado':'afetado'}">${esc(r.situacao)}</span></td>
       <td><div class="tese-cell">${esc(r.tese||r.questao||'—')}</div></td>
       <td class="hide-sm"><div class="disp-cell">${esc(r.dispositivos||'—')}</div></td>
+      <td class="hide-sm"><div class="inst-cell">${insts.length?insts.map(x=>`<span class="inst-tag">${esc(x)}</span>`).join(''):'—'}</div></td>
       <td><div class="row-actions">
         <button class="icon-btn" data-edit="${r.id}" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="icon-btn" data-del="${r.id}" title="Excluir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -476,8 +362,7 @@ function renderAcervo(){
   body.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();openForm(b.dataset.edit);}));
   body.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();delRecord(b.dataset.del);}));
   const total=state.records.length, relev=state.records.filter(r=>r.relevante).length;
-  document.getElementById('stat-total').textContent=total;
-  document.getElementById('stat-relev').textContent=relev;
+  document.getElementById('stat-total').textContent=total;document.getElementById('stat-relev').textContent=relev;
   document.getElementById('tabcount').textContent=total?`(${total})`:'';
   document.getElementById('count-line').innerHTML=`Exibindo <b>${list.length}</b> de <b>${total}</b> precedentes`+(relevFilter?' · filtro de relevância ativo':'');
 }
@@ -500,31 +385,31 @@ function openForm(id){
   document.getElementById('i-tese').value=f?f.tese:'';
   document.getElementById('i-dispositivos').value=f?f.dispositivos:'';
   document.getElementById('i-leis').value=f?(f.leis||''):'';
+  document.getElementById('i-institutos').value=f?(f.institutos||''):'';
   document.getElementById('i-info').value=f?f.info:'';
   formRelev=f?f.relevante:false;paintFormRelev();
   document.getElementById('btn-form-del').hidden=!id;
   document.getElementById('overlay-form').classList.add('open');
 }
 function closeForm(){document.getElementById('overlay-form').classList.remove('open');editingId=null;}
-function paintFormRelev(){const b=document.getElementById('i-relev-toggle');b.classList.toggle('on',formRelev);b.innerHTML=`<span class="dot"></span> ${formRelev?'Relevante — marcado':'Marcar como relevante para meu trabalho/estudo'}`;}
+function paintFormRelev(){const b=document.getElementById('i-relev-toggle');b.classList.toggle('on',formRelev);b.innerHTML=`<span class="dot"></span> ${formRelev?'Relevante — marcado':'Marcar como relevante'}`;}
 document.getElementById('i-relev-toggle').addEventListener('click',()=>{formRelev=!formRelev;paintFormRelev();});
 document.getElementById('btn-form-save').addEventListener('click',()=>{
   const ramoSel=document.getElementById('i-ramo').value;
-  const rec=normalizeRecord({id:editingId||uid(),tipo:document.getElementById('i-tipo').value,ramo:ramoSel==='— não classificado —'?'':ramoSel,tribunal:document.getElementById('i-tribunal').value,jornada:document.getElementById('i-jornada').value,numero:document.getElementById('i-numero').value.trim(),recurso:document.getElementById('i-recurso').value.trim(),relator:document.getElementById('i-relator').value.trim(),situacao:document.getElementById('i-situacao').value,transito:document.getElementById('i-transito').value,questao:document.getElementById('i-questao').value.trim(),tese:document.getElementById('i-tese').value.trim(),dispositivos:document.getElementById('i-dispositivos').value.trim(),leis:document.getElementById('i-leis').value.trim(),info:document.getElementById('i-info').value.trim(),relevante:formRelev,createdAt:editingId?(state.records.find(x=>x.id===editingId)||{}).createdAt:undefined});
+  const rec=normalizeRecord({id:editingId||uid(),tipo:document.getElementById('i-tipo').value,ramo:ramoSel==='— não classificado —'?'':ramoSel,tribunal:document.getElementById('i-tribunal').value,jornada:document.getElementById('i-jornada').value,numero:document.getElementById('i-numero').value.trim(),recurso:document.getElementById('i-recurso').value.trim(),relator:document.getElementById('i-relator').value.trim(),situacao:document.getElementById('i-situacao').value,transito:document.getElementById('i-transito').value,questao:document.getElementById('i-questao').value.trim(),tese:document.getElementById('i-tese').value.trim(),dispositivos:document.getElementById('i-dispositivos').value.trim(),leis:document.getElementById('i-leis').value.trim(),institutos:document.getElementById('i-institutos').value.trim(),info:document.getElementById('i-info').value.trim(),relevante:formRelev,createdAt:editingId?(state.records.find(x=>x.id===editingId)||{}).createdAt:undefined});
   if(editingId){const i=state.records.findIndex(x=>x.id===editingId);state.records[i]=rec;toast('Precedente atualizado');}else{state.records.push(rec);toast('Precedente cadastrado');}
   saveData();refreshSelects();renderAcervo();closeForm();
 });
 document.getElementById('btn-form-del').addEventListener('click',()=>{if(editingId)delRecord(editingId,true);});
 document.getElementById('btn-novo').addEventListener('click',()=>openForm());
-
-function delRecord(id,fromForm){const r=state.records.find(x=>x.id===id);if(!r)return;if(!confirm(`Excluir "${r.tipo} ${r.numero||''}"? Esta ação não pode ser desfeita.`))return;state.records=state.records.filter(x=>x.id!==id);saveData();refreshSelects();renderAcervo();if(fromForm)closeForm();closeDetail();toast('Precedente excluído');}
+function delRecord(id,fromForm){const r=state.records.find(x=>x.id===id);if(!r)return;if(!confirm(`Excluir "${r.tipo} ${r.numero||''}"?`))return;state.records=state.records.filter(x=>x.id!==id);saveData();refreshSelects();renderAcervo();if(fromForm)closeForm();closeDetail();toast('Precedente excluído');}
 
 function openDetail(id){
   const r=state.records.find(x=>x.id===id);if(!r)return;detailId=id;
   document.getElementById('d-tipo').textContent=r.tipo;
   document.getElementById('d-title').textContent=`${r.numero?('Nº '+r.numero):'Sem número'}${r.tribunal?(' · '+r.tribunal):''}`;
   document.getElementById('d-star').classList.toggle('on',r.relevante);
-  const rows=[['Situação',r.situacao,false],...(r.jornada?[['Jornada (CJF)',r.jornada,false]]:[]),['Ramo do direito',r.ramo||'—',false],['Relator',r.relator||'—',false],['Recurso paradigma',r.recurso||'—',false],['Trânsito em julgado',fmtDate(r.transito),false],['Dispositivos de lei',r.dispositivos||'—',false],['Leis (filtro)',recordLaws(r).join(' · ')||'—',false],['Questão submetida',r.questao||'—',true],['Tese firmada / enunciado',r.tese||'—',true,true],['Informações complementares',r.info||'—',true]];
+  const rows=[['Situação',r.situacao,false],...(r.jornada?[['Jornada (CJF)',r.jornada,false]]:[]),['Ramo do direito',r.ramo||'—',false],['Relator',r.relator||'—',false],['Recurso paradigma',r.recurso||'—',false],['Trânsito em julgado',fmtDate(r.transito),false],['Dispositivos de lei',r.dispositivos||'—',false],['Leis (filtro)',recordLaws(r).join(' · ')||'—',false],['Institutos jurídicos',recordInstitutos(r).join(' · ')||'—',false],['Questão submetida',r.questao||'—',true],['Tese firmada / enunciado',r.tese||'—',true,true],['Informações complementares',r.info||'—',true]];
   document.getElementById('detail-grid').innerHTML=rows.map(([k,v,full,serif])=>`<div class="detail-block ${full?'full':''}"><div class="k">${esc(k)}</div><div class="v ${serif?'serif':''}">${esc(v)}</div></div>`).join('');
   document.getElementById('overlay-detail').classList.add('open');
 }
@@ -534,45 +419,46 @@ document.getElementById('d-del').addEventListener('click',()=>delRecord(detailId
 document.getElementById('d-star').addEventListener('click',()=>{toggleRelev(detailId);const r=state.records.find(x=>x.id===detailId);document.getElementById('d-star').classList.toggle('on',r.relevante);});
 document.getElementById('d-dup').addEventListener('click',()=>{const r=state.records.find(x=>x.id===detailId);if(!r)return;const c=normalizeRecord({...r,id:uid(),numero:r.numero?r.numero+' (cópia)':'',createdAt:undefined});state.records.push(c);saveData();refreshSelects();renderAcervo();closeDetail();toast('Precedente duplicado');});
 
-['f-search','f-tipo','f-ramo','f-situacao','f-ano','f-lei'].forEach(id=>{document.getElementById(id).addEventListener('input',renderAcervo);});
+['f-search','f-tribunal','f-tipo','f-ramo','f-situacao','f-ano','f-lei','f-instituto'].forEach(id=>{document.getElementById(id).addEventListener('input',renderAcervo);});
 document.getElementById('f-sort').addEventListener('change',e=>{sortField=e.target.value;sortDir=(sortField==='tribunal'||sortField==='numero')?'asc':'desc';updateDirBtn();renderAcervo();});
 document.getElementById('f-dir').addEventListener('click',()=>{sortDir=sortDir==='asc'?'desc':'asc';updateDirBtn();renderAcervo();});
 document.getElementById('f-relev').addEventListener('click',()=>{relevFilter=!relevFilter;document.getElementById('f-relev').classList.toggle('on',relevFilter);renderAcervo();});
 
-// ===== IA =====
 document.querySelectorAll('.provider-pick button').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.provider-pick button').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');cfg.provider=b.dataset.prov;saveCfg();refreshAiModelPicker();});});
 document.getElementById('btn-ia-clear').addEventListener('click',()=>{document.getElementById('ai-input').value='';aiPreviewRecords=[];loadedPdfs=[];renderPdfList();renderPreview();setStatus('','');});
 function setStatus(kind,msg){const el=document.getElementById('ai-status');el.className='status-msg'+(kind?(' show '+kind):'');el.textContent=msg;}
 function buildPrompt(text,isPdf){
-  const fonte=isPdf?`As tabelas de precedentes estão no(s) documento(s) PDF anexado(s). Percorra TODAS as linhas de TODAS as tabelas e gere um objeto por tema/precedente — não omita nenhuma linha. Texto adicional do usuário:\n"""\n${text||'(sem instruções adicionais)'}\n"""`:`TEXTO:\n"""\n${text}\n"""`;
-  return `Você é assistente jurídico especializado em precedentes qualificados brasileiros (STF/STJ) e enunciados do Conselho da Justiça Federal (CJF). Analise o conteúdo a seguir e extraia CADA precedente/enunciado distinto.
+  const fonte=isPdf?`As tabelas de precedentes estão no(s) PDF(s) anexado(s). Percorra TODAS as linhas e gere um objeto por tema — não omita nenhuma. Texto adicional:\n"""\n${text||'(sem instruções)'}\n"""`:`TEXTO:\n"""\n${text}\n"""`;
+  return `Você é assistente jurídico especializado em precedentes qualificados brasileiros (STF/STJ) e enunciados do CJF. Extraia CADA precedente/enunciado distinto.
 
-Responda SOMENTE com um array JSON válido, sem markdown, sem comentários. Cada objeto (use "" quando ausente):
+Responda SOMENTE com um array JSON válido, sem markdown. Cada objeto (use "" quando ausente):
 - "tipo": um de [${cfg.tipos.map(t=>'"'+t+'"').join(', ')}]. Repercussão geral do STF => "Tema"; repetitivo do STJ => "Tema Repetitivo"; enunciado de Jornada do CJF => "Enunciado (CJF)".
-- "tribunal": um de [${cfg.tribunais.map(t=>'"'+t+'"').join(', ')}] ou "". Para enunciados de Jornada, use "CJF".
-- "jornada": para enunciados do CJF, um de [${cfg.jornadas.map(j=>'"'+j+'"').join(', ')}] (a mais adequada ao conteúdo); senão "".
-- "numero": número do tema/súmula/enunciado (apenas o número).
-- "recurso": recurso paradigma (ex.: "RE 1.000.000"); para enunciados, "".
-- "relator": nome do relator; para enunciados, "".
-- "questao": questão submetida a julgamento / descrição.
-- "tese": para precedentes, a tese firmada; para enunciados, o texto integral do enunciado, fielmente.
-- "transito": trânsito em julgado no formato AAAA-MM-DD, ou "".
-- "info": complementos (para enunciados, a edição da jornada — I, II, III...).
-- "situacao": "Julgado" se há tese/enunciado aprovado; "Afetado" se apenas afetado/pendente.
-- "dispositivos": dispositivos de lei pertinentes, AINDA QUE NÃO citados expressamente, inferindo do tipo, da questão, da tese ou do enunciado (ex.: "art. 5º, XXXV, CF; art. 1.015, CPC").
-- "leis": array de diplomas/leis SEM artigo (ex.: ["CF","CPC","Código Civil"]).
-- "ramo": um de [${cfg.ramos.map(r=>'"'+r+'"').join(', ')}], conforme o conteúdo do precedente ou do enunciado apresentado.
+- "tribunal": um de [${cfg.tribunais.map(t=>'"'+t+'"').join(', ')}] ou "". Enunciados de Jornada => "CJF".
+- "jornada": para enunciados do CJF, um de [${cfg.jornadas.map(j=>'"'+j+'"').join(', ')}]; senão "".
+- "numero": número do tema/súmula/enunciado.
+- "recurso": recurso paradigma (ex.: "RE 1.000.000"); enunciados => "".
+- "relator": relator; enunciados => "".
+- "questao": questão submetida / descrição.
+- "tese": tese firmada; para enunciados, o texto integral, fielmente.
+- "transito": AAAA-MM-DD ou "".
+- "info": complementos (para enunciados, a edição — I, II, III...).
+- "situacao": "Julgado" se há tese/enunciado; "Afetado" se pendente.
+- "dispositivos": dispositivos de lei, AINDA QUE NÃO citados, inferindo do tipo, questão, tese ou enunciado.
+- "leis": array de diplomas SEM artigo (ex.: ["CF","CPC","Código Civil"]).
+- "institutos": array com os INSTITUTOS JURÍDICOS tratados (ex.: ["honorários advocatícios","sucumbência","prescrição"]). Pode haver mais de um; seja específico e padronize.
+- "ramo": um de [${cfg.ramos.map(r=>'"'+r+'"').join(', ')}], conforme o conteúdo.
 
-Não invente números, recursos, datas ou relator: se não constarem, "". A inferência aplica-se SOMENTE a "dispositivos" e "leis".
+Não invente números, recursos, datas ou relator. A inferência aplica-se a "dispositivos", "leis" e "institutos".
 
 ${fonte}`;
 }
+function buildInstitutosPrompt(payload){return `Você é assistente jurídico. Para CADA item da lista, identifique os INSTITUTOS JURÍDICOS de que trata (ex.: "honorários advocatícios","prescrição","coisa julgada","responsabilidade civil do Estado","usucapião"). Pode haver mais de um; seja específico e padronize os nomes. Responda SOMENTE com um array JSON [{"id":"<id>","institutos":["..."]}], sem markdown.\nLISTA:\n${JSON.stringify(payload)}`;}
 function salvageObjects(s){const objs=[];let depth=0,start=-1,inStr=false,esc=false;for(let i=0;i<s.length;i++){const c=s[i];if(inStr){if(esc){esc=false;}else if(c==='\\'){esc=true;}else if(c==='"'){inStr=false;}continue;}if(c==='"'){inStr=true;continue;}if(c==='{'){if(depth===0)start=i;depth++;}else if(c==='}'){if(depth>0){depth--;if(depth===0&&start>=0){objs.push(s.slice(start,i+1));start=-1;}}}}const parsed=[];for(const o of objs){try{parsed.push(JSON.parse(o));}catch(e){}}return parsed;}
 function parseAIJson(raw){let s=(raw||'').trim();s=s.replace(/^```(json)?/i,'').replace(/```$/,'').trim();const a=s.indexOf('['),b=s.lastIndexOf(']');const core=(a>=0&&b>a)?s.slice(a,b+1):s;try{const data=JSON.parse(core);return Array.isArray(data)?data:[data];}catch(e){const objs=salvageObjects(s);if(objs.length)return objs;throw e;}}
-async function callGemini(prompt,pdfs){if(!cfg.geminiKey)throw new Error('Configure a chave do Gemini na aba “Backup & API”.');const model=cfg.geminiModel||'gemini-2.5-flash';const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(cfg.geminiKey)}`;const parts=[];(pdfs||[]).forEach(p=>parts.push({inline_data:{mime_type:'application/pdf',data:p.b64}}));parts.push({text:prompt});const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts}],generationConfig:{temperature:0.1,responseMimeType:'application/json',maxOutputTokens:32768}})});if(!res.ok){const t=await res.text();throw new Error('Gemini '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(((data.candidates||[])[0]||{}).content||{}).parts?.map(p=>p.text).join('')||'';return parseAIJson(txt);}
-async function callClaude(prompt,pdfs){if(!cfg.claudeKey)throw new Error('Configure a chave do Claude na aba “Backup & API”.');const model=cfg.claudeModel||'claude-sonnet-4-6';const content=[];(pdfs||[]).forEach(p=>content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:p.b64}}));content.push({type:'text',text:prompt});const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':cfg.claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model,max_tokens:16000,messages:[{role:'user',content}]})});if(!res.ok){const t=await res.text();throw new Error('Claude '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('');return parseAIJson(txt);}
+async function callGemini(prompt,pdfs){if(!cfg.geminiKey)throw new Error('Configure a chave do Gemini.');const model=cfg.geminiModel||'gemini-2.5-flash';const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(cfg.geminiKey)}`;const parts=[];(pdfs||[]).forEach(p=>parts.push({inline_data:{mime_type:'application/pdf',data:p.b64}}));parts.push({text:prompt});const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts}],generationConfig:{temperature:0.1,responseMimeType:'application/json',maxOutputTokens:32768}})});if(!res.ok){const t=await res.text();throw new Error('Gemini '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(((data.candidates||[])[0]||{}).content||{}).parts?.map(p=>p.text).join('')||'';return parseAIJson(txt);}
+async function callClaude(prompt,pdfs){if(!cfg.claudeKey)throw new Error('Configure a chave do Claude.');const model=cfg.claudeModel||'claude-sonnet-4-6';const content=[];(pdfs||[]).forEach(p=>content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:p.b64}}));content.push({type:'text',text:prompt});const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':cfg.claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model,max_tokens:16000,messages:[{role:'user',content}]})});if(!res.ok){const t=await res.text();throw new Error('Claude '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('');return parseAIJson(txt);}
 function fileToB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
-async function addPdfFiles(files){for(const f of files){if(f.type==='application/pdf'||/\.pdf$/i.test(f.name)){try{const b64=await fileToB64(f);loadedPdfs.push({name:f.name,b64,size:f.size});}catch(e){}}}renderPdfList();}
+async function addPdfFiles(files){for(const f of files){if(f.type==='application/pdf'||/\.pdf$/i.test(f.name)){try{const b64=await fileToB64(f);loadedPdfs.push({name:f.name,b64});}catch(e){}}}renderPdfList();}
 function renderPdfList(){const el=document.getElementById('ai-pdf-list');el.innerHTML=loadedPdfs.map((p,i)=>`<span class="tag-pill">${esc(p.name)}<button data-pdf-del="${i}">×</button></span>`).join('');el.querySelectorAll('[data-pdf-del]').forEach(b=>b.addEventListener('click',()=>{loadedPdfs.splice(+b.dataset.pdfDel,1);renderPdfList();}));document.getElementById('btn-ia-pdf').disabled=loadedPdfs.length===0;}
 const pdfDrop=document.getElementById('ai-pdf-drop'),pdfInput=document.getElementById('ai-pdf');
 pdfDrop.addEventListener('click',()=>pdfInput.click());
@@ -580,51 +466,66 @@ pdfInput.addEventListener('change',e=>{addPdfFiles(e.target.files);pdfInput.valu
 ;['dragover','dragenter'].forEach(ev=>pdfDrop.addEventListener(ev,e=>{e.preventDefault();pdfDrop.style.borderColor='var(--pine)';}));
 ;['dragleave','drop'].forEach(ev=>pdfDrop.addEventListener(ev,e=>{e.preventDefault();pdfDrop.style.borderColor='';}));
 pdfDrop.addEventListener('drop',e=>addPdfFiles(e.dataTransfer.files));
-async function runAnalysis(pdfs){const text=document.getElementById('ai-input').value.trim();const usingPdf=pdfs&&pdfs.length;if(!usingPdf&&!text){setStatus('err','Cole um texto ou carregue um PDF para análise.');return;}setStatus('work',usingPdf?'Lendo o(s) PDF(s) e extraindo os temas — pode levar alguns instantes.':'Analisando e classificando…');aiPreviewRecords=[];renderPreview();try{const prompt=buildPrompt(text,!!usingPdf);const items=cfg.provider==='claude'?await callClaude(prompt,pdfs):await callGemini(prompt,pdfs);aiPreviewRecords=items.map(normalizeRecord);if(!aiPreviewRecords.length){setStatus('err','Nenhum precedente reconhecido.');return;}setStatus('ok',`${aiPreviewRecords.length} precedente(s) reconhecido(s). Revise e confirme.`);renderPreview();}catch(e){setStatus('err','Falha: '+e.message);}}
+async function runAnalysis(pdfs){const text=document.getElementById('ai-input').value.trim();const usingPdf=pdfs&&pdfs.length;if(!usingPdf&&!text){setStatus('err','Cole um texto ou carregue um PDF.');return;}setStatus('work',usingPdf?'Lendo o(s) PDF(s) e extraindo os temas…':'Analisando e classificando…');aiPreviewRecords=[];renderPreview();try{const prompt=buildPrompt(text,!!usingPdf);const items=cfg.provider==='claude'?await callClaude(prompt,pdfs):await callGemini(prompt,pdfs);aiPreviewRecords=items.map(normalizeRecord);if(!aiPreviewRecords.length){setStatus('err','Nenhum precedente reconhecido.');return;}setStatus('ok',`${aiPreviewRecords.length} precedente(s) reconhecido(s). Revise e confirme.`);renderPreview();}catch(e){setStatus('err','Falha: '+e.message);}}
 document.getElementById('btn-ia-run').addEventListener('click',()=>runAnalysis(null));
 document.getElementById('btn-ia-pdf').addEventListener('click',()=>{if(loadedPdfs.length)runAnalysis(loadedPdfs);});
-function renderPreview(){const box=document.getElementById('ai-preview');if(!aiPreviewRecords.length){box.innerHTML='<p class="hint">Os precedentes reconhecidos aparecerão aqui para revisão. Nada é gravado até você confirmar.</p>';return;}box.innerHTML=`<div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn primary small" id="btn-confirm-all">Confirmar e inserir ${aiPreviewRecords.length}</button><button class="btn small" id="btn-discard-all">Descartar</button></div>`+aiPreviewRecords.map((r,i)=>`<div class="preview-card"><div class="pc-top"><span class="tipo-tag">${esc(r.tipo)}</span><span class="num-cell">${esc(r.numero||'s/nº')}</span><span class="sit ${r.situacao==='Julgado'?'julgado':'afetado'}">${esc(r.situacao)}</span><span class="ramo-cell">${esc(r.ramo||'—')}</span><button class="icon-btn" data-prev-del="${i}" title="Remover" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div><div class="pc-tese">${esc((r.tese||r.questao||'—').slice(0,240))}</div></div>`).join('');box.querySelector('#btn-confirm-all')?.addEventListener('click',()=>{aiPreviewRecords.forEach(r=>state.records.push(normalizeRecord(r)));saveData();refreshSelects();renderAcervo();toast(`${aiPreviewRecords.length} precedente(s) inserido(s)`);aiPreviewRecords=[];renderPreview();setStatus('ok','Inseridos no acervo.');document.querySelector('[data-tab="acervo"]').click();});box.querySelector('#btn-discard-all')?.addEventListener('click',()=>{aiPreviewRecords=[];renderPreview();});box.querySelectorAll('[data-prev-del]').forEach(b=>b.addEventListener('click',()=>{aiPreviewRecords.splice(+b.dataset.prevDel,1);renderPreview();}));}
+async function classifyExisting(){
+  const alvo=state.records.filter(r=>!recordInstitutos(r).length);
+  if(!alvo.length){setStatus('ok','Todos os precedentes já têm institutos jurídicos.');return;}
+  if(!confirm(`Serão classificados ${alvo.length} precedente(s) sem institutos, usando a IA (${cfg.provider}). Prosseguir?`))return;
+  const batch=15;let done=0;
+  try{
+    for(let i=0;i<alvo.length;i+=batch){
+      const grupo=alvo.slice(i,i+batch);
+      setStatus('work',`Classificando institutos… ${done}/${alvo.length}`);
+      const payload=grupo.map(r=>({id:r.id,tipo:r.tipo,numero:r.numero,ramo:r.ramo,questao:r.questao,tese:r.tese}));
+      const prompt=buildInstitutosPrompt(payload);
+      const items=cfg.provider==='claude'?await callClaude(prompt):await callGemini(prompt);
+      items.forEach(it=>{const r=state.records.find(x=>x.id===it.id);if(r&&Array.isArray(it.institutos))r.institutos=it.institutos.join('; ');});
+      done+=grupo.length;saveData();
+    }
+    refreshSelects();renderAcervo();setStatus('ok',`Institutos classificados em ${done} precedente(s).`);
+  }catch(e){saveData();refreshSelects();renderAcervo();setStatus('err','Interrompido: '+e.message+' (o já classificado foi salvo).');}
+}
+document.getElementById('btn-ia-institutos').addEventListener('click',classifyExisting);
+function renderPreview(){const box=document.getElementById('ai-preview');if(!aiPreviewRecords.length){box.innerHTML='<p class="hint">Os precedentes reconhecidos aparecerão aqui para revisão. Nada é gravado até você confirmar.</p>';return;}box.innerHTML=`<div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn primary small" id="btn-confirm-all">Confirmar e inserir ${aiPreviewRecords.length}</button><button class="btn small" id="btn-discard-all">Descartar</button></div>`+aiPreviewRecords.map((r,i)=>`<div class="preview-card"><div class="pc-top"><span class="tipo-tag">${esc(r.tipo)}</span><span class="num-cell">${esc(r.numero||'s/nº')}</span><span class="sit ${r.situacao==='Julgado'?'julgado':'afetado'}">${esc(r.situacao)}</span><span class="ramo-cell">${esc(r.ramo||'—')}</span><button class="icon-btn" data-prev-del="${i}" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div><div class="pc-tese">${esc((r.tese||r.questao||'—').slice(0,220))}</div>${recordInstitutos(r).length?`<div class="inst-cell" style="margin-top:6px">${recordInstitutos(r).map(x=>`<span class="inst-tag">${esc(x)}</span>`).join('')}</div>`:''}</div>`).join('');box.querySelector('#btn-confirm-all')?.addEventListener('click',()=>{aiPreviewRecords.forEach(r=>state.records.push(normalizeRecord(r)));saveData();refreshSelects();renderAcervo();toast(`${aiPreviewRecords.length} inserido(s)`);aiPreviewRecords=[];renderPreview();setStatus('ok','Inseridos no acervo.');document.querySelector('[data-tab="acervo"]').click();});box.querySelector('#btn-discard-all')?.addEventListener('click',()=>{aiPreviewRecords=[];renderPreview();});box.querySelectorAll('[data-prev-del]').forEach(b=>b.addEventListener('click',()=>{aiPreviewRecords.splice(+b.dataset.prevDel,1);renderPreview();}));}
 
-// ===== Painéis =====
 function dashData(){return dashScopeIsFiltered?applyFilters(state.records):state.records.slice();}
 function groupCount(list,keyFn){const m={};list.forEach(r=>{const k=keyFn(r)||'— não informado —';m[k]=(m[k]||0)+1;});return Object.entries(m).sort((a,b)=>b[1]-a[1]);}
 function groupCountMulti(list,keysFn){const m={};list.forEach(r=>{const ks=keysFn(r);(ks.length?ks:['— não informado —']).forEach(k=>{m[k]=(m[k]||0)+1;});});return Object.entries(m).sort((a,b)=>b[1]-a[1]);}
-function renderBars(elId,pairs,brass){const el=document.getElementById(elId);if(!pairs.length){el.innerHTML='<p class="hint">Sem dados para o recorte atual.</p>';return;}const max=Math.max(...pairs.map(p=>p[1]));el.innerHTML=pairs.map(([k,v])=>`<div class="bar-row"><div class="bl" title="${esc(k)}">${esc(k)}</div><div class="bar-track"><div class="bar-fill ${brass?'brass':''}" style="width:${max?Math.max(4,(v/max*100)):0}%"></div></div><div class="bn">${v}</div></div>`).join('');}
+function renderBars(elId,pairs,brass){const el=document.getElementById(elId);if(!pairs.length){el.innerHTML='<p class="hint">Sem dados para o recorte.</p>';return;}const max=Math.max(...pairs.map(p=>p[1]));el.innerHTML=pairs.slice(0,14).map(([k,v])=>`<div class="bar-row"><div class="bl" title="${esc(k)}">${esc(k)}</div><div class="bar-track"><div class="bar-fill ${brass?'brass':''}" style="width:${max?Math.max(4,(v/max*100)):0}%"></div></div><div class="bn">${v}</div></div>`).join('');}
 function renderDashboard(){
   const list=dashData();
   const total=list.length,relev=list.filter(r=>r.relevante).length,julg=list.filter(r=>r.situacao==='Julgado').length,afet=list.filter(r=>r.situacao==='Afetado').length;
-  document.getElementById('stat-cards').innerHTML=`<div class="stat-card"><div class="n">${total}</div><div class="l">Precedentes no recorte</div></div><div class="stat-card brass"><div class="n">${relev}</div><div class="l">Marcados como relevantes</div></div><div class="stat-card"><div class="n">${julg}</div><div class="l">Julgados (tese firmada)</div></div><div class="stat-card brass"><div class="n">${afet}</div><div class="l">Apenas afetados</div></div>`;
-  const gRamo=groupCount(list,r=>r.ramo),gTipo=groupCount(list,r=>r.tipo),gSit=groupCount(list,r=>r.situacao),gAno=groupCount(list,r=>yearOf(r.transito)).sort((a,b)=>(''+b[0]).localeCompare(''+a[0])),gLei=groupCountMulti(list,recordLaws);
-  renderBars('chart-ramo',gRamo);renderBars('chart-tipo',gTipo,true);renderBars('chart-sit',gSit);renderBars('chart-ano',gAno,true);renderBars('chart-lei',gLei);
-  document.getElementById('cn-ramo').textContent=gRamo.length+' ramos';document.getElementById('cn-tipo').textContent=gTipo.length+' tipos';document.getElementById('cn-sit').textContent='';document.getElementById('cn-ano').textContent=gAno.length+' anos';document.getElementById('cn-lei').textContent=gLei.length+' leis';
-  const f=currentFilters();const parts=[];if(dashScopeIsFiltered){if(f.q)parts.push('busca "'+f.q+'"');if(f.tipo)parts.push('tipo '+f.tipo);if(f.ramo)parts.push(f.ramo);if(f.situacao)parts.push(f.situacao);if(f.ano)parts.push('ano '+f.ano);if(f.lei)parts.push('lei '+f.lei);if(f.relev)parts.push('só relevantes');}
-  document.getElementById('dash-scope').textContent=dashScopeIsFiltered?(parts.length?('Recorte: '+parts.join(' · ')):'Recorte: acervo integral (sem filtros ativos)'):'Recorte: acervo integral';
+  document.getElementById('stat-cards').innerHTML=`<div class="stat-card"><div class="n">${total}</div><div class="l">Precedentes no recorte</div></div><div class="stat-card brass"><div class="n">${relev}</div><div class="l">Marcados como relevantes</div></div><div class="stat-card"><div class="n">${julg}</div><div class="l">Julgados</div></div><div class="stat-card brass"><div class="n">${afet}</div><div class="l">Afetados</div></div>`;
+  const gTrib=groupCount(list,r=>r.tribunal),gRamo=groupCount(list,r=>r.ramo),gInst=groupCountMulti(list,recordInstitutos),gTipo=groupCount(list,r=>r.tipo),gSit=groupCount(list,r=>r.situacao),gAno=groupCount(list,r=>yearOf(r.transito)).sort((a,b)=>(''+b[0]).localeCompare(''+a[0])),gLei=groupCountMulti(list,recordLaws);
+  renderBars('chart-trib',gTrib);renderBars('chart-ramo',gRamo);renderBars('chart-inst',gInst,true);renderBars('chart-tipo',gTipo,true);renderBars('chart-sit',gSit);renderBars('chart-ano',gAno,true);renderBars('chart-lei',gLei);
+  document.getElementById('cn-trib').textContent=gTrib.length+' tribunais';document.getElementById('cn-ramo').textContent=gRamo.length+' ramos';document.getElementById('cn-inst').textContent=gInst.length+' institutos';document.getElementById('cn-tipo').textContent=gTipo.length+' tipos';document.getElementById('cn-sit').textContent='';document.getElementById('cn-ano').textContent=gAno.length+' anos';document.getElementById('cn-lei').textContent=gLei.length+' leis';
+  const f=currentFilters();const parts=[];if(dashScopeIsFiltered){if(f.q)parts.push('busca "'+f.q+'"');if(f.tribunal)parts.push(f.tribunal);if(f.tipo)parts.push('tipo '+f.tipo);if(f.ramo)parts.push(f.ramo);if(f.situacao)parts.push(f.situacao);if(f.ano)parts.push('ano '+f.ano);if(f.lei)parts.push('lei '+f.lei);if(f.instituto)parts.push('instituto: '+f.instituto);if(f.relev)parts.push('só relevantes');}
+  document.getElementById('dash-scope').textContent=dashScopeIsFiltered?(parts.length?('Recorte: '+parts.join(' · ')):'Recorte: acervo integral (sem filtros)'):'Recorte: acervo integral';
 }
 document.getElementById('btn-dash-refilter').addEventListener('click',()=>{dashScopeIsFiltered=true;renderDashboard();});
-
 function exportDoc(){
   const list=dashData();const g=(fn)=>groupCount(list,fn);
-  const table=(title,pairs)=>`<h3 style="font-family:Georgia,serif;color:#0f4d3a">${title}</h3><table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;width:100%;font-size:11pt"><tr style="background:#e4efe9"><td><b>Categoria</b></td><td width="90"><b>Quantidade</b></td></tr>${pairs.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table><br/>`;
-  const rows=list.map(r=>`<tr><td>${esc(r.tipo)}</td><td>${esc(r.numero)}</td><td>${esc(r.tribunal)}</td><td>${esc(r.ramo)}</td><td>${esc(r.situacao)}</td><td>${esc(r.tese||r.questao)}</td><td>${esc(r.dispositivos)}</td><td>${esc(recordLaws(r).join('; '))}</td><td>${esc(fmtDate(r.transito))}</td></tr>`).join('');
+  const table=(title,pairs)=>`<h3 style="font-family:Georgia,serif;color:#0f4d3a">${title}</h3><table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;width:100%;font-size:11pt"><tr style="background:#e4efe9"><td><b>Categoria</b></td><td width="90"><b>Qtd.</b></td></tr>${pairs.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('')}</table><br/>`;
+  const rows=list.map(r=>`<tr><td>${esc(r.tipo)}</td><td>${esc(r.numero)}</td><td>${esc(r.tribunal)}</td><td>${esc(r.ramo)}</td><td>${esc(r.situacao)}</td><td>${esc(r.tese||r.questao)}</td><td>${esc(r.dispositivos)}</td><td>${esc(recordLaws(r).join('; '))}</td><td>${esc(recordInstitutos(r).join('; '))}</td><td>${esc(fmtDate(r.transito))}</td></tr>`).join('');
   const scope=document.getElementById('dash-scope').textContent, now=new Date().toLocaleDateString('pt-BR');
-  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Painel de Precedentes</title><style>body{font-family:Calibri,Arial,sans-serif;color:#1c231f}h1,h2,h3{font-family:Georgia,serif;color:#0f4d3a}table{font-size:10pt}</style></head><body><h1>Repertório de Precedentes Qualificados</h1><p><i>Painel de visualização — gerado em ${now}.</i><br/>${esc(scope)}</p><p><b>Total no recorte:</b> ${list.length} | <b>Relevantes:</b> ${list.filter(r=>r.relevante).length} | <b>Julgados:</b> ${list.filter(r=>r.situacao==='Julgado').length} | <b>Afetados:</b> ${list.filter(r=>r.situacao==='Afetado').length}</p><hr/>${table('Distribuição por ramo do direito',g(r=>r.ramo))}${table('Distribuição por tipo de precedente',g(r=>r.tipo))}${table('Distribuição por situação',g(r=>r.situacao))}${table('Distribuição por ano do trânsito em julgado',g(r=>yearOf(r.transito)).sort((a,b)=>(''+b[0]).localeCompare(''+a[0])))}${table('Distribuição por lei / diploma',groupCountMulti(list,recordLaws))}<h2 style="font-family:Georgia,serif;color:#0f4d3a">Relação de precedentes do recorte</h2><table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;width:100%;font-size:9.5pt"><tr style="background:#e4efe9"><td><b>Tipo</b></td><td><b>Nº</b></td><td><b>Trib.</b></td><td><b>Ramo</b></td><td><b>Situação</b></td><td><b>Tese / questão</b></td><td><b>Dispositivos</b></td><td><b>Leis</b></td><td><b>Trânsito</b></td></tr>${rows}</table></body></html>`;
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Painel</title><style>body{font-family:Calibri,Arial,sans-serif;color:#1c231f}h1,h2,h3{font-family:Georgia,serif;color:#0f4d3a}table{font-size:10pt}</style></head><body><h1>Repertório de Precedentes Qualificados</h1><p><i>Painel — gerado em ${now}.</i><br/>${esc(scope)}</p><p><b>Total:</b> ${list.length} | <b>Relevantes:</b> ${list.filter(r=>r.relevante).length} | <b>Julgados:</b> ${list.filter(r=>r.situacao==='Julgado').length} | <b>Afetados:</b> ${list.filter(r=>r.situacao==='Afetado').length}</p><hr/>${table('Por tribunal',g(r=>r.tribunal))}${table('Por ramo do direito',g(r=>r.ramo))}${table('Por instituto jurídico',groupCountMulti(list,recordInstitutos))}${table('Por tipo',g(r=>r.tipo))}${table('Por situação',g(r=>r.situacao))}${table('Por ano do trânsito',g(r=>yearOf(r.transito)).sort((a,b)=>(''+b[0]).localeCompare(''+a[0])))}${table('Por lei / diploma',groupCountMulti(list,recordLaws))}<h2 style="font-family:Georgia,serif;color:#0f4d3a">Relação de precedentes</h2><table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;width:100%;font-size:9pt"><tr style="background:#e4efe9"><td><b>Tipo</b></td><td><b>Nº</b></td><td><b>Trib.</b></td><td><b>Ramo</b></td><td><b>Situação</b></td><td><b>Tese / questão</b></td><td><b>Dispositivos</b></td><td><b>Leis</b></td><td><b>Institutos</b></td><td><b>Trânsito</b></td></tr>${rows}</table></body></html>`;
   const blob=new Blob(['\ufeff'+html],{type:'application/msword'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='painel-precedentes.doc';a.click();URL.revokeObjectURL(a.href);toast('Documento .doc gerado');
 }
 document.getElementById('btn-export-doc').addEventListener('click',exportDoc);
-
 function download(name,content,mime){const blob=new Blob([content],{type:mime});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);}
 document.getElementById('btn-export-json').addEventListener('click',()=>{const payload={app:'repertorio-precedentes',version:1,exportedAt:new Date().toISOString(),cfg:{tipos:cfg.tipos,ramos:cfg.ramos,tribunais:cfg.tribunais,jornadas:cfg.jornadas},records:state.records};download(`backup-precedentes-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(payload,null,2),'application/json');toast('Backup baixado');});
-document.getElementById('btn-export-csv').addEventListener('click',()=>{const cols=['tipo','tribunal','jornada','numero','recurso','relator','ramo','situacao','transito','questao','tese','dispositivos','leis','info','relevante'];const head=cols.join(';');const esc2=s=>'"'+String(s==null?'':s).replace(/"/g,'""').replace(/\r?\n/g,' ')+'"';const body=state.records.map(r=>cols.map(c=>esc2(r[c])).join(';')).join('\n');download(`precedentes-${new Date().toISOString().slice(0,10)}.csv`,'\ufeff'+head+'\n'+body,'text/csv;charset=utf-8');toast('Planilha exportada');});
-function importJson(text){let data;try{data=JSON.parse(text);}catch(e){toast('Arquivo inválido');return;}const recs=Array.isArray(data)?data:(data.records||[]);if(!Array.isArray(recs)||!recs.length){toast('Nenhum registro encontrado');return;}const mode=confirm(`O arquivo contém ${recs.length} precedente(s).\n\nOK = SUBSTITUIR o acervo atual\nCancelar = MESCLAR com o acervo atual`);if(data.cfg){if(Array.isArray(data.cfg.tipos)&&data.cfg.tipos.length)cfg.tipos=data.cfg.tipos;if(Array.isArray(data.cfg.ramos)&&data.cfg.ramos.length)cfg.ramos=data.cfg.ramos;if(Array.isArray(data.cfg.tribunais)&&data.cfg.tribunais.length)cfg.tribunais=data.cfg.tribunais;if(Array.isArray(data.cfg.jornadas)&&data.cfg.jornadas.length)cfg.jornadas=data.cfg.jornadas;saveCfg();}const normalized=recs.map(normalizeRecord);if(mode){state.records=normalized;}else{const ids=new Set(state.records.map(r=>r.id));normalized.forEach(r=>{if(ids.has(r.id))r.id=uid();state.records.push(r);});}saveData();refreshSelects();renderAcervo();renderTagEditors();toast(mode?'Acervo substituído':'Acervo mesclado');}
+document.getElementById('btn-export-csv').addEventListener('click',()=>{const cols=['tipo','tribunal','jornada','numero','recurso','relator','ramo','situacao','transito','questao','tese','dispositivos','leis','institutos','info','relevante'];const head=cols.join(';');const q=s=>'"'+String(s==null?'':s).replace(/"/g,'""').replace(/\r?\n/g,' ')+'"';const body=state.records.map(r=>cols.map(c=>q(r[c])).join(';')).join('\n');download(`precedentes-${new Date().toISOString().slice(0,10)}.csv`,'\ufeff'+head+'\n'+body,'text/csv;charset=utf-8');toast('Planilha exportada');});
+function importJson(text){let data;try{data=JSON.parse(text);}catch(e){toast('Arquivo inválido');return;}const recs=Array.isArray(data)?data:(data.records||[]);if(!Array.isArray(recs)||!recs.length){toast('Nenhum registro');return;}const mode=confirm(`O arquivo contém ${recs.length} precedente(s).\n\nOK = SUBSTITUIR\nCancelar = MESCLAR`);if(data.cfg){if(Array.isArray(data.cfg.tipos)&&data.cfg.tipos.length)cfg.tipos=data.cfg.tipos;if(Array.isArray(data.cfg.ramos)&&data.cfg.ramos.length)cfg.ramos=data.cfg.ramos;if(Array.isArray(data.cfg.tribunais)&&data.cfg.tribunais.length)cfg.tribunais=data.cfg.tribunais;if(Array.isArray(data.cfg.jornadas)&&data.cfg.jornadas.length)cfg.jornadas=data.cfg.jornadas;saveCfg();}const norm=recs.map(normalizeRecord);if(mode){state.records=norm;}else{const ids=new Set(state.records.map(r=>r.id));norm.forEach(r=>{if(ids.has(r.id))r.id=uid();state.records.push(r);});}saveData();refreshSelects();renderAcervo();renderTagEditors();toast(mode?'Acervo substituído':'Acervo mesclado');}
 const drop=document.getElementById('drop-json'),fileInput=document.getElementById('file-json');
 drop.addEventListener('click',()=>fileInput.click());
 fileInput.addEventListener('change',e=>{const f=e.target.files[0];if(f){const rd=new FileReader();rd.onload=()=>importJson(rd.result);rd.readAsText(f);}fileInput.value='';});
 ;['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.style.borderColor='var(--pine)';}));
 ;['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.style.borderColor='';}));
 drop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f){const rd=new FileReader();rd.onload=()=>importJson(rd.result);rd.readAsText(f);}});
-document.getElementById('btn-wipe').addEventListener('click',()=>{if(!confirm('Apagar TODOS os precedentes deste navegador? Faça um backup antes.'))return;if(!confirm('Confirmação final: apagar todo o acervo?'))return;state.records=[];saveData();refreshSelects();renderAcervo();toast('Acervo apagado');});
+document.getElementById('btn-wipe').addEventListener('click',()=>{if(!confirm('Apagar TODOS os precedentes? Faça backup antes.'))return;if(!confirm('Confirmação final?'))return;state.records=[];saveData();refreshSelects();renderAcervo();toast('Acervo apagado');});
 
-// ===== Modelos de IA =====
 function fillModelSelect(sel,models,current){sel.innerHTML='';models.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;sel.appendChild(o);});const o=document.createElement('option');o.value=CUSTOM_MODEL;o.textContent='Outro (digitar…)';sel.appendChild(o);if(current&&!models.includes(current)){sel.value=CUSTOM_MODEL;return true;}sel.value=current||models[0];return false;}
 function refreshAiModelPicker(){const sel=document.getElementById('ai-model-sel'),cust=document.getElementById('ai-model-custom');const isG=cfg.provider!=='claude';const cur=isG?cfg.geminiModel:cfg.claudeModel;const custom=fillModelSelect(sel,isG?GEMINI_MODELS:CLAUDE_MODELS,cur);cust.hidden=!custom;cust.value=custom?cur:'';}
 function refreshModelPickers(){const gC=fillModelSelect(document.getElementById('cfg-gemini-model-sel'),GEMINI_MODELS,cfg.geminiModel);const gc=document.getElementById('cfg-gemini-model-custom');gc.hidden=!gC;gc.value=gC?cfg.geminiModel:'';const cC=fillModelSelect(document.getElementById('cfg-claude-model-sel'),CLAUDE_MODELS,cfg.claudeModel);const cc=document.getElementById('cfg-claude-model-custom');cc.hidden=!cC;cc.value=cC?cfg.claudeModel:'';refreshAiModelPicker();}
@@ -636,8 +537,6 @@ document.getElementById('ai-model-sel').addEventListener('change',e=>{const v=e.
 document.getElementById('ai-model-custom').addEventListener('input',e=>{const isG=cfg.provider!=='claude';if(isG)cfg.geminiModel=e.target.value.trim();else cfg.claudeModel=e.target.value.trim();saveCfg();});
 function loadCfgFields(){document.getElementById('cfg-gemini-key').value=cfg.geminiKey||'';document.getElementById('cfg-claude-key').value=cfg.claudeKey||'';document.querySelectorAll('.provider-pick button').forEach(b=>b.classList.toggle('sel',b.dataset.prov===cfg.provider));}
 document.getElementById('btn-save-keys').addEventListener('click',()=>{cfg.geminiKey=document.getElementById('cfg-gemini-key').value.trim();cfg.claudeKey=document.getElementById('cfg-claude-key').value.trim();if(!cfg.geminiModel)cfg.geminiModel='gemini-2.5-flash';if(!cfg.claudeModel)cfg.claudeModel='claude-sonnet-4-6';saveCfg();toast('Configurações salvas');});
-
-// ===== Listas editáveis =====
 function renderTagEditors(){
   const te=document.getElementById('tipos-editor'),re=document.getElementById('ramos-editor'),tre=document.getElementById('tribunais-editor'),je=document.getElementById('jornadas-editor');
   te.innerHTML=cfg.tipos.map((t,i)=>`<span class="tag-pill">${esc(t)}<button data-tt="${i}">×</button></span>`).join('');
@@ -657,11 +556,8 @@ document.getElementById('new-tipo').addEventListener('keydown',e=>{if(e.key==='E
 document.getElementById('new-ramo').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add-ramo').click();});
 document.getElementById('new-tribunal').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add-tribunal').click();});
 document.getElementById('new-jornada').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add-jornada').click();});
-
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(o=>o.classList.remove('open'));});
-
-// ===== Boot =====
 load();refreshSelects();loadCfgFields();refreshModelPickers();renderTagEditors();updateDirBtn();renderAcervo();
 </script>
 </body>
