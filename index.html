@@ -67,6 +67,7 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
 .overlay{position:fixed;inset:0;background:rgba(20,26,22,.44);backdrop-filter:blur(2px);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:32px 18px;overflow:auto}
 .overlay.open{display:flex}
 .modal{background:var(--paper-2);border-radius:16px;box-shadow:var(--shadow);width:100%;max-width:860px;border:1px solid var(--line);animation:pop .2s ease}
+.modal.wide{max-width:1040px}
 @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
 .modal-head{display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--line)}.modal-head h2{font-size:18px;flex:1}
 .modal-body{padding:20px 22px;max-height:calc(100vh - 210px);overflow:auto}
@@ -81,16 +82,19 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
 .detail-block .v{font-size:14px;color:var(--ink);white-space:pre-wrap}.detail-block.full{grid-column:1/-1}
 .detail-block .v.serif{font-family:var(--serif);font-size:15.5px;line-height:1.55}
 .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);margin-bottom:18px}
-.panel h2{font-size:19px;margin-bottom:4px}.panel .lead{color:var(--ink-3);font-size:13.5px;margin-bottom:18px;max-width:720px}
+.panel h2{font-size:19px;margin-bottom:4px}.panel .lead{color:var(--ink-3);font-size:13.5px;margin-bottom:18px;max-width:760px}
 .ai-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
-.ai-paste textarea{width:100%;min-height:200px;font-size:14px}
+.ai-paste textarea{width:100%;min-height:180px;font-size:14px}
 .provider-pick{display:flex;gap:8px;margin-bottom:14px}
 .provider-pick button{flex:1;border:1px solid var(--line-2);background:var(--paper-2);border-radius:10px;padding:11px;cursor:pointer;font-weight:600;font-size:13.5px;color:var(--ink-2);display:flex;flex-direction:column;gap:2px;align-items:flex-start}
 .provider-pick button small{font-weight:400;color:var(--ink-3);font-size:11px}
 .provider-pick button.sel{border-color:var(--pine);background:var(--pine-soft);color:var(--pine)}
 .preview-card{border:1px solid var(--line);border-radius:11px;padding:13px 14px;margin-bottom:10px;background:var(--paper)}
+.preview-card.dup{border-color:var(--danger-soft);background:var(--danger-soft)}
 .preview-card .pc-top{display:flex;gap:9px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
 .preview-card .pc-tese{font-size:13px;color:var(--ink-2)}
+.badge{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px}
+.badge.novo{background:var(--pine-soft);color:var(--pine)}.badge.dup{background:#f0d4d0;color:var(--danger)}
 .status-msg{font-size:13px;padding:10px 13px;border-radius:9px;margin-top:12px;display:none}.status-msg.show{display:block}
 .status-msg.err{background:var(--danger-soft);color:var(--danger)}.status-msg.ok{background:var(--pine-soft);color:var(--pine)}.status-msg.work{background:var(--brass-soft);color:#7a5f1a}
 .ai-or{display:flex;align-items:center;gap:12px;margin:16px 0 12px;color:var(--ink-3);font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
@@ -121,6 +125,13 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
 .tag-pill button{background:none;border:none;cursor:pointer;color:var(--ink-3);font-size:14px;line-height:1;padding:0 3px}.tag-pill button:hover{color:var(--danger)}
 .file-drop{border:1.5px dashed var(--line-2);border-radius:11px;padding:20px;text-align:center;color:var(--ink-3);font-size:13px;cursor:pointer}
 .file-drop:hover{border-color:var(--pine);background:var(--pine-soft);color:var(--pine)}
+.dup-group{border:1px solid var(--line);border-radius:12px;margin-bottom:16px;overflow:hidden}
+.dup-group-head{background:var(--brass-soft);color:#6d5518;padding:10px 14px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.dup-item{display:flex;gap:12px;padding:12px 14px;border-top:1px solid var(--line);align-items:flex-start}
+.dup-item:first-of-type{border-top:none}
+.dup-item .di-main{flex:1;min-width:0}
+.dup-item .di-tese{font-size:12.5px;color:var(--ink-2);white-space:pre-wrap;margin-top:4px}
+.dup-item .di-meta{font-size:11.5px;color:var(--ink-3);margin-top:4px}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#f0f2ee;padding:11px 20px;border-radius:10px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:90}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 @media (max-width:900px){.ai-grid,.charts-grid,.cfg-grid,.detail-grid,.form-grid{grid-template-columns:1fr}.stat-cards{grid-template-columns:1fr 1fr}.hide-sm{display:none}}
@@ -138,6 +149,7 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
   <nav class="tabs">
     <button class="tab-btn active" data-tab="acervo">Acervo <span class="count" id="tabcount"></span></button>
     <button class="tab-btn" data-tab="ia">Importar com IA</button>
+    <button class="tab-btn" data-tab="descobrir">Buscar novos</button>
     <button class="tab-btn" data-tab="paineis">Painéis</button>
     <button class="tab-btn" data-tab="config">Backup &amp; API</button>
   </nav>
@@ -156,6 +168,7 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
       <div class="field filter-min"><label>Ordenar por</label><select id="f-sort"><option value="recent">Recentes</option><option value="tribunal">Tribunal</option><option value="numero">Número</option><option value="transito">Trânsito em julgado</option></select></div>
       <div class="field" style="align-self:flex-end"><button class="btn small" id="f-dir" title="Inverter ordem">↓</button></div>
       <div class="field" style="align-self:flex-end"><button class="toggle-relev" id="f-relev"><span class="dot"></span> Só relevantes</button></div>
+      <div class="field" style="align-self:flex-end"><button class="btn small" id="btn-dup">Verificar duplicidade</button></div>
       <div class="field" style="align-self:flex-end;margin-left:auto"><button class="btn primary" id="btn-novo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg> Novo precedente</button></div>
     </div>
     <div class="count-line" id="count-line"></div>
@@ -191,18 +204,46 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
         <div class="ai-paste">
           <div class="provider-pick"><button data-prov="gemini" class="sel"><span>Google Gemini</span><small>generativelanguage API</small></button><button data-prov="claude"><span>Anthropic Claude</span><small>Messages API</small></button></div>
           <div class="field" style="margin-bottom:14px"><label style="display:block;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);font-weight:700">Modelo da IA</label><select id="ai-model-sel" style="width:100%"></select><input type="text" id="ai-model-custom" placeholder="digite o identificador do modelo" style="width:100%;margin-top:6px" hidden /></div>
-          <textarea id="ai-input" placeholder="Ex.: Tema 1234/STF. Relator Min. Fulano. RE 1.000.000. Tese firmada: '...'. Trânsito em 10/03/2024. — ou — Enunciado 12 da III Jornada de Direito Civil: '...'"></textarea>
+          <textarea id="ai-input" placeholder="Ex.: Tema 1234/STF. Relator Min. Fulano. RE 1.000.000. Tese firmada: '...'. Trânsito em 10/03/2024."></textarea>
           <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><button class="btn primary" id="btn-ia-run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z" stroke-linejoin="round"/></svg> Analisar texto</button><button class="btn ghost" id="btn-ia-clear">Limpar</button></div>
           <div class="ai-or"><span>ou envie tabelas em PDF</span></div>
-          <div class="file-drop" id="ai-pdf-drop">Clique ou arraste PDFs aqui — muitos temas de uma vez<input type="file" id="ai-pdf" accept="application/pdf,.pdf" multiple hidden /></div>
+          <div class="file-drop" id="ai-pdf-drop">Clique ou arraste PDFs aqui<input type="file" id="ai-pdf" accept="application/pdf,.pdf" multiple hidden /></div>
           <div class="ai-pdf-list" id="ai-pdf-list"></div>
-          <button class="btn primary" id="btn-ia-pdf" style="margin-top:10px" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v4a1 1 0 0 0 1 1h4M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" stroke-linejoin="round"/></svg> Analisar PDF e extrair temas</button>
+          <button class="btn primary" id="btn-ia-pdf" style="margin-top:10px" disabled>Analisar PDF e extrair temas</button>
           <div class="ai-or"><span>classificar acervo existente</span></div>
-          <p class="hint" style="margin-bottom:8px">Percorre os precedentes já cadastrados que ainda não têm institutos jurídicos e os classifica com a IA.</p>
+          <p class="hint" style="margin-bottom:8px">Percorre os precedentes já cadastrados sem institutos jurídicos e os classifica com a IA.</p>
           <button class="btn" id="btn-ia-institutos">Classificar institutos dos já cadastrados</button>
           <div class="status-msg" id="ai-status"></div>
         </div>
         <div><div class="ai-preview" id="ai-preview"><p class="hint">Os precedentes reconhecidos aparecerão aqui para revisão. Nada é gravado até você confirmar.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-descobrir">
+    <div class="panel">
+      <h2>Buscar novos precedentes na internet</h2>
+      <p class="lead">A IA pesquisa na web e nas fontes oficiais do STF, STJ e TJSC (temas de repercussão geral, repetitivos, súmulas, súmulas vinculantes, IAC, IRDR, PUIL — afetados ou julgados) e devolve os que ainda não estão no seu acervo, já analisados e prontos para inclusão. Cada item é conferido contra o que você já tem para evitar duplicidade. Como é geração assistida por IA, confira sempre os dados antes de inserir. Recomendado usar o Gemini.</p>
+      <div class="ai-grid">
+        <div>
+          <div class="form-grid" style="grid-template-columns:1fr 1fr">
+            <div class="field"><label>Tribunais a pesquisar</label>
+              <div class="tag-editor" id="disc-tribs" style="margin-top:0"></div>
+            </div>
+            <div class="field"><label>Tipos a procurar</label>
+              <div class="tag-editor" id="disc-tipos" style="margin-top:0"></div>
+            </div>
+            <div class="field"><label>Situação</label><select id="disc-situacao"><option value="ambos">Afetados e julgados</option><option value="Julgado">Somente julgados</option><option value="Afetado">Somente afetados</option></select></div>
+            <div class="field"><label>Período / foco (opcional)</label><input type="text" id="disc-periodo" placeholder="Ex.: 2024–2025; ou tema honorários" /></div>
+            <div class="field full"><label>Instruções adicionais (opcional)</label><input type="text" id="disc-extra" placeholder="Ex.: priorizar direito processual civil" /></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+            <button class="btn primary" id="btn-disc-run"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg> Pesquisar novos precedentes</button>
+            <button class="btn ghost" id="btn-disc-clear">Limpar resultados</button>
+          </div>
+          <div class="status-msg" id="disc-status"></div>
+        </div>
+        <div><div class="ai-preview" id="disc-preview"><p class="hint">Os precedentes encontrados aparecerão aqui, marcados como novos ou já existentes, para você revisar e inserir.</p></div></div>
       </div>
     </div>
   </section>
@@ -264,7 +305,7 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
     <div class="field full"><label>Tese firmada / texto do enunciado</label><textarea id="i-tese" rows="4"></textarea></div>
     <div class="field full"><label>Dispositivos de lei referidos</label><input type="text" id="i-dispositivos" placeholder="Ex.: art. 5º, XXXV, CF; art. 85 CPC" /></div>
     <div class="field full"><label>Leis referidas (filtro por lei)</label><input type="text" id="i-leis" placeholder="Ex.: CF; CPC; Código Civil — em branco, deriva dos dispositivos" /></div>
-    <div class="field full"><label>Institutos jurídicos (filtro por instituto)</label><input type="text" id="i-institutos" placeholder="Ex.: honorários advocatícios; sucumbência; prescrição — separe por ponto e vírgula" /></div>
+    <div class="field full"><label>Institutos jurídicos (filtro por instituto)</label><input type="text" id="i-institutos" placeholder="Ex.: honorários advocatícios; sucumbência; prescrição" /></div>
     <div class="field full"><label>Informações complementares</label><textarea id="i-info" rows="3"></textarea></div>
     <div class="field full"><label>Relevância</label><button class="toggle-relev" id="i-relev-toggle" type="button"><span class="dot"></span> Marcar como relevante</button></div>
   </div></div>
@@ -275,6 +316,12 @@ table.acervo tbody tr{cursor:pointer;transition:background .12s}table.acervo tbo
   <div class="modal-head"><span class="tipo-tag" id="d-tipo"></span><h2 id="d-title" style="flex:1"></h2><button class="star" id="d-star" title="Relevância">★</button><button class="icon-btn" onclick="closeDetail()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>
   <div class="modal-body"><div class="detail-grid" id="detail-grid"></div></div>
   <div class="modal-foot"><button class="btn ghost" id="d-dup">Duplicar</button><button class="btn danger" id="d-del">Excluir</button><button class="btn primary" id="d-edit">Editar</button></div>
+</div></div>
+
+<div class="overlay" id="overlay-dup"><div class="modal wide">
+  <div class="modal-head"><h2 id="dup-title">Verificação de duplicidade</h2><button class="icon-btn" onclick="document.getElementById('overlay-dup').classList.remove('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>
+  <div class="modal-body"><div id="dup-body"></div></div>
+  <div class="modal-foot"><button class="btn ghost" onclick="document.getElementById('overlay-dup').classList.remove('open')">Fechar</button></div>
 </div></div>
 
 <div class="toast" id="toast"></div>
@@ -288,9 +335,12 @@ const DEFAULT_JORNADAS=['Jornada de Direito Civil','Jornada de Direito Comercial
 const GEMINI_MODELS=['gemini-3.5-flash','gemini-3-flash','gemini-3.1-pro-preview','gemini-3.1-flash-lite','gemini-2.5-flash','gemini-2.5-flash-lite','gemini-2.5-pro'];
 const CLAUDE_MODELS=['claude-opus-4-8','claude-sonnet-5','claude-sonnet-4-6','claude-haiku-4-5-20251001','claude-fable-5','claude-opus-4-7'];
 const CUSTOM_MODEL='__custom__';
+const DISCOVER_TRIBS=['STF','STJ','TJSC'];
+const DISCOVER_SITES={STF:'portal.stf.jus.br',STJ:'scon.stj.jus.br / processo.stj.jus.br',TJSC:'tjsc.jus.br / busca.tjsc.jus.br'};
 let state={records:[]};
 let cfg={tipos:[...DEFAULT_TIPOS],ramos:[...DEFAULT_RAMOS],tribunais:[...DEFAULT_TRIBUNAIS],jornadas:[...DEFAULT_JORNADAS],geminiKey:'',geminiModel:'gemini-2.5-flash',claudeKey:'',claudeModel:'claude-sonnet-4-6',provider:'gemini'};
-let aiPreviewRecords=[], editingId=null, formRelev=false, relevFilter=false, detailId=null, dashScopeIsFiltered=true, loadedPdfs=[], sortField='recent', sortDir='desc';
+let aiPreviewRecords=[], discPreviewRecords=[], editingId=null, formRelev=false, relevFilter=false, detailId=null, dashScopeIsFiltered=true, loadedPdfs=[], sortField='recent', sortDir='desc';
+let discSelTribs=[...DISCOVER_TRIBS], discSelTipos=['Tema','Tema Repetitivo','Súmula','Súmula Vinculante','IAC','IRDR','PUIL'];
 
 function load(){try{const d=JSON.parse(localStorage.getItem(LS_DATA));if(d&&Array.isArray(d.records))state=d;}catch(e){}try{const c=JSON.parse(localStorage.getItem(LS_CFG));if(c)cfg=Object.assign(cfg,c);}catch(e){}if(!cfg.tipos||!cfg.tipos.length)cfg.tipos=[...DEFAULT_TIPOS];if(!cfg.ramos||!cfg.ramos.length)cfg.ramos=[...DEFAULT_RAMOS];if(!cfg.tribunais||!cfg.tribunais.length)cfg.tribunais=[...DEFAULT_TRIBUNAIS];if(!cfg.jornadas||!cfg.jornadas.length)cfg.jornadas=[...DEFAULT_JORNADAS];}
 function saveData(){try{localStorage.setItem(LS_DATA,JSON.stringify(state));}catch(e){toast('Não foi possível gravar.');}}
@@ -305,9 +355,12 @@ function parseLaws(text){if(!text)return [];const out=new Set();(text.match(/\b(
 function splitList(s){return (s||'').split(/[;,]/).map(x=>x.trim()).filter(Boolean);}
 function recordLaws(r){const ex=splitList(r.leis).map(normLaw).filter(Boolean);if(ex.length)return [...new Set(ex)];return [...new Set(parseLaws(r.dispositivos||'').map(normLaw).filter(Boolean))];}
 function recordInstitutos(r){return [...new Set(splitList(r.institutos))];}
-function normalizeRecord(r){return {id:r.id||uid(),tipo:r.tipo||'Tema',tribunal:r.tribunal||'',jornada:r.jornada||'',numero:r.numero||'',recurso:r.recurso||'',relator:r.relator||'',questao:r.questao||'',tese:r.tese||'',transito:r.transito||'',info:r.info||'',situacao:(r.situacao==='Afetado'?'Afetado':'Julgado'),dispositivos:r.dispositivos||'',leis:Array.isArray(r.leis)?r.leis.join('; '):(r.leis||''),institutos:Array.isArray(r.institutos)?r.institutos.join('; '):(r.institutos||''),ramo:r.ramo||'',relevante:!!r.relevante,createdAt:r.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
+function normalizeRecord(r){return {id:r.id||uid(),tipo:r.tipo||'Tema',tribunal:r.tribunal||'',jornada:r.jornada||'',numero:r.numero||'',recurso:r.recurso||'',relator:r.relator||'',questao:r.questao||'',tese:r.tese||'',transito:r.transito||'',info:r.info||'',situacao:(r.situacao==='Afetado'?'Afetado':'Julgado'),dispositivos:r.dispositivos||'',leis:Array.isArray(r.leis)?r.leis.join('; '):(r.leis||''),institutos:Array.isArray(r.institutos)?r.institutos.join('; '):(r.institutos||''),ramo:r.ramo||'',fonte:r.fonte||'',relevante:!!r.relevante,createdAt:r.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
 
-document.querySelectorAll('.tab-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('view-'+b.dataset.tab).classList.add('active');if(b.dataset.tab==='paineis')renderDashboard();});});
+// chave para detecção de duplicidade: tribunal + tipo + número
+function dupKey(r){return [(r.tribunal||'').trim().toUpperCase(),(r.tipo||'').trim().toUpperCase(),(''+(r.numero||'')).replace(/[^\dA-Za-z]/g,'').toUpperCase()].join('|');}
+
+document.querySelectorAll('.tab-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('view-'+b.dataset.tab).classList.add('active');if(b.dataset.tab==='paineis')renderDashboard();if(b.dataset.tab==='descobrir')renderDiscoverPickers();});});
 
 function fillSelect(el,items,{includeAll=false,allLabel='Todos',selected=''}={}){el.innerHTML='';if(includeAll){const o=document.createElement('option');o.value='';o.textContent=allLabel;el.appendChild(o);}items.forEach(it=>{const o=document.createElement('option');o.value=it;o.textContent=it;if(it===selected)o.selected=true;el.appendChild(o);});}
 function refreshSelects(){
@@ -396,7 +449,7 @@ function paintFormRelev(){const b=document.getElementById('i-relev-toggle');b.cl
 document.getElementById('i-relev-toggle').addEventListener('click',()=>{formRelev=!formRelev;paintFormRelev();});
 document.getElementById('btn-form-save').addEventListener('click',()=>{
   const ramoSel=document.getElementById('i-ramo').value;
-  const rec=normalizeRecord({id:editingId||uid(),tipo:document.getElementById('i-tipo').value,ramo:ramoSel==='— não classificado —'?'':ramoSel,tribunal:document.getElementById('i-tribunal').value,jornada:document.getElementById('i-jornada').value,numero:document.getElementById('i-numero').value.trim(),recurso:document.getElementById('i-recurso').value.trim(),relator:document.getElementById('i-relator').value.trim(),situacao:document.getElementById('i-situacao').value,transito:document.getElementById('i-transito').value,questao:document.getElementById('i-questao').value.trim(),tese:document.getElementById('i-tese').value.trim(),dispositivos:document.getElementById('i-dispositivos').value.trim(),leis:document.getElementById('i-leis').value.trim(),institutos:document.getElementById('i-institutos').value.trim(),info:document.getElementById('i-info').value.trim(),relevante:formRelev,createdAt:editingId?(state.records.find(x=>x.id===editingId)||{}).createdAt:undefined});
+  const rec=normalizeRecord({id:editingId||uid(),tipo:document.getElementById('i-tipo').value,ramo:ramoSel==='— não classificado —'?'':ramoSel,tribunal:document.getElementById('i-tribunal').value,jornada:document.getElementById('i-jornada').value,numero:document.getElementById('i-numero').value.trim(),recurso:document.getElementById('i-recurso').value.trim(),relator:document.getElementById('i-relator').value.trim(),situacao:document.getElementById('i-situacao').value,transito:document.getElementById('i-transito').value,questao:document.getElementById('i-questao').value.trim(),tese:document.getElementById('i-tese').value.trim(),dispositivos:document.getElementById('i-dispositivos').value.trim(),leis:document.getElementById('i-leis').value.trim(),institutos:document.getElementById('i-institutos').value.trim(),info:document.getElementById('i-info').value.trim(),relevante:formRelev,createdAt:editingId?(state.records.find(x=>x.id===editingId)||{}).createdAt:undefined,fonte:editingId?(state.records.find(x=>x.id===editingId)||{}).fonte:undefined});
   if(editingId){const i=state.records.findIndex(x=>x.id===editingId);state.records[i]=rec;toast('Precedente atualizado');}else{state.records.push(rec);toast('Precedente cadastrado');}
   saveData();refreshSelects();renderAcervo();closeForm();
 });
@@ -409,7 +462,7 @@ function openDetail(id){
   document.getElementById('d-tipo').textContent=r.tipo;
   document.getElementById('d-title').textContent=`${r.numero?('Nº '+r.numero):'Sem número'}${r.tribunal?(' · '+r.tribunal):''}`;
   document.getElementById('d-star').classList.toggle('on',r.relevante);
-  const rows=[['Situação',r.situacao,false],...(r.jornada?[['Jornada (CJF)',r.jornada,false]]:[]),['Ramo do direito',r.ramo||'—',false],['Relator',r.relator||'—',false],['Recurso paradigma',r.recurso||'—',false],['Trânsito em julgado',fmtDate(r.transito),false],['Dispositivos de lei',r.dispositivos||'—',false],['Leis (filtro)',recordLaws(r).join(' · ')||'—',false],['Institutos jurídicos',recordInstitutos(r).join(' · ')||'—',false],['Questão submetida',r.questao||'—',true],['Tese firmada / enunciado',r.tese||'—',true,true],['Informações complementares',r.info||'—',true]];
+  const rows=[['Situação',r.situacao,false],...(r.jornada?[['Jornada (CJF)',r.jornada,false]]:[]),['Ramo do direito',r.ramo||'—',false],['Relator',r.relator||'—',false],['Recurso paradigma',r.recurso||'—',false],['Trânsito em julgado',fmtDate(r.transito),false],['Dispositivos de lei',r.dispositivos||'—',false],['Leis (filtro)',recordLaws(r).join(' · ')||'—',false],['Institutos jurídicos',recordInstitutos(r).join(' · ')||'—',false],['Questão submetida',r.questao||'—',true],['Tese firmada / enunciado',r.tese||'—',true,true],['Informações complementares',r.info||'—',true],...(r.fonte?[['Fonte',r.fonte,true]]:[])];
   document.getElementById('detail-grid').innerHTML=rows.map(([k,v,full,serif])=>`<div class="detail-block ${full?'full':''}"><div class="k">${esc(k)}</div><div class="v ${serif?'serif':''}">${esc(v)}</div></div>`).join('');
   document.getElementById('overlay-detail').classList.add('open');
 }
@@ -424,9 +477,44 @@ document.getElementById('f-sort').addEventListener('change',e=>{sortField=e.targ
 document.getElementById('f-dir').addEventListener('click',()=>{sortDir=sortDir==='asc'?'desc':'asc';updateDirBtn();renderAcervo();});
 document.getElementById('f-relev').addEventListener('click',()=>{relevFilter=!relevFilter;document.getElementById('f-relev').classList.toggle('on',relevFilter);renderAcervo();});
 
+// ===== Verificador de duplicidade =====
+document.getElementById('btn-dup').addEventListener('click',runDuplicateCheck);
+function runDuplicateCheck(){
+  const groups={};
+  state.records.forEach(r=>{const k=dupKey(r);(groups[k]=groups[k]||[]).push(r);});
+  const dups=Object.entries(groups).filter(([k,arr])=>arr.length>1 && k.split('|')[2]!=='');
+  const body=document.getElementById('dup-body');
+  document.getElementById('dup-title').textContent='Verificação de duplicidade';
+  if(!dups.length){body.innerHTML='<p class="hint" style="font-size:14px">Nenhuma duplicidade encontrada. Considera-se duplicado o mesmo tribunal + tipo + número.</p>';document.getElementById('overlay-dup').classList.add('open');return;}
+  body.innerHTML=`<p class="hint" style="margin-bottom:14px">Foram encontrados ${dups.length} grupo(s) com possível duplicidade (mesmo tribunal, tipo e número). Em cada grupo, mantenha o que quiser e exclua os demais.</p>`+dups.map(([k,arr])=>{
+    const p=k.split('|');
+    return `<div class="dup-group"><div class="dup-group-head">${esc(p[0]||'—')} · ${esc(p[1]||'—')} · nº ${esc(p[2]||'—')} — ${arr.length} registros</div>`+arr.map(r=>`
+      <div class="dup-item" data-dupid="${r.id}">
+        <div class="di-main">
+          <div><span class="tipo-tag">${esc(r.tipo)}</span> <span class="num-cell">${esc(r.numero||'s/nº')}</span> <span class="sit ${r.situacao==='Julgado'?'julgado':'afetado'}">${esc(r.situacao)}</span></div>
+          <div class="di-tese">${esc((r.tese||r.questao||'—').slice(0,300))}</div>
+          <div class="di-meta">Relator: ${esc(r.relator||'—')} · Trânsito: ${esc(fmtDate(r.transito))} · Ramo: ${esc(r.ramo||'—')} · Criado: ${esc((r.createdAt||'').slice(0,10))}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <button class="btn small" data-dupkeep="${r.id}">Manter</button>
+          <button class="btn small danger" data-dupdel="${r.id}">Excluir</button>
+        </div>
+      </div>`).join('')+`</div>`;
+  }).join('');
+  body.querySelectorAll('[data-dupdel]').forEach(b=>b.addEventListener('click',()=>{
+    const id=b.dataset.dupdel;const r=state.records.find(x=>x.id===id);
+    if(!confirm(`Excluir este registro (${r.tipo} ${r.numero||''})?`))return;
+    state.records=state.records.filter(x=>x.id!==id);saveData();refreshSelects();renderAcervo();runDuplicateCheck();toast('Registro excluído');
+  }));
+  body.querySelectorAll('[data-dupkeep]').forEach(b=>b.addEventListener('click',()=>{b.closest('.dup-item').style.opacity=.5;b.textContent='Mantido';b.disabled=true;}));
+  document.getElementById('overlay-dup').classList.add('open');
+}
+
+// ===== IA: provedores / modelos =====
 document.querySelectorAll('.provider-pick button').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.provider-pick button').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');cfg.provider=b.dataset.prov;saveCfg();refreshAiModelPicker();});});
 document.getElementById('btn-ia-clear').addEventListener('click',()=>{document.getElementById('ai-input').value='';aiPreviewRecords=[];loadedPdfs=[];renderPdfList();renderPreview();setStatus('','');});
 function setStatus(kind,msg){const el=document.getElementById('ai-status');el.className='status-msg'+(kind?(' show '+kind):'');el.textContent=msg;}
+function setDiscStatus(kind,msg){const el=document.getElementById('disc-status');el.className='status-msg'+(kind?(' show '+kind):'');el.textContent=msg;}
 function buildPrompt(text,isPdf){
   const fonte=isPdf?`As tabelas de precedentes estão no(s) PDF(s) anexado(s). Percorra TODAS as linhas e gere um objeto por tema — não omita nenhuma. Texto adicional:\n"""\n${text||'(sem instruções)'}\n"""`:`TEXTO:\n"""\n${text}\n"""`;
   return `Você é assistente jurídico especializado em precedentes qualificados brasileiros (STF/STJ) e enunciados do CJF. Extraia CADA precedente/enunciado distinto.
@@ -441,22 +529,50 @@ Responda SOMENTE com um array JSON válido, sem markdown. Cada objeto (use "" qu
 - "questao": questão submetida / descrição.
 - "tese": tese firmada; para enunciados, o texto integral, fielmente.
 - "transito": AAAA-MM-DD ou "".
-- "info": complementos (para enunciados, a edição — I, II, III...).
+- "info": complementos (para enunciados, a edição).
 - "situacao": "Julgado" se há tese/enunciado; "Afetado" se pendente.
 - "dispositivos": dispositivos de lei, AINDA QUE NÃO citados, inferindo do tipo, questão, tese ou enunciado.
-- "leis": array de diplomas SEM artigo (ex.: ["CF","CPC","Código Civil"]).
-- "institutos": array com os INSTITUTOS JURÍDICOS tratados (ex.: ["honorários advocatícios","sucumbência","prescrição"]). Pode haver mais de um; seja específico e padronize.
+- "leis": array de diplomas SEM artigo.
+- "institutos": array com os institutos jurídicos tratados (pode haver mais de um; seja específico).
 - "ramo": um de [${cfg.ramos.map(r=>'"'+r+'"').join(', ')}], conforme o conteúdo.
 
 Não invente números, recursos, datas ou relator. A inferência aplica-se a "dispositivos", "leis" e "institutos".
 
 ${fonte}`;
 }
-function buildInstitutosPrompt(payload){return `Você é assistente jurídico. Para CADA item da lista, identifique os INSTITUTOS JURÍDICOS de que trata (ex.: "honorários advocatícios","prescrição","coisa julgada","responsabilidade civil do Estado","usucapião"). Pode haver mais de um; seja específico e padronize os nomes. Responda SOMENTE com um array JSON [{"id":"<id>","institutos":["..."]}], sem markdown.\nLISTA:\n${JSON.stringify(payload)}`;}
+function buildInstitutosPrompt(payload){return `Você é assistente jurídico. Para CADA item, identifique os INSTITUTOS JURÍDICOS tratados (ex.: "honorários advocatícios","prescrição","coisa julgada"). Pode haver mais de um; seja específico e padronize. Responda SOMENTE com array JSON [{"id":"<id>","institutos":["..."]}], sem markdown.\nLISTA:\n${JSON.stringify(payload)}`;}
+function buildDiscoverPrompt(){
+  const tribs=discSelTribs.length?discSelTribs:DISCOVER_TRIBS;
+  const tipos=discSelTipos.length?discSelTipos:['Tema','Súmula'];
+  const sit=document.getElementById('disc-situacao').value;
+  const periodo=document.getElementById('disc-periodo').value.trim();
+  const extra=document.getElementById('disc-extra').value.trim();
+  const sitTxt=sit==='ambos'?'afetados ou julgados':(sit==='Julgado'?'somente julgados':'somente afetados');
+  const existentes=state.records.filter(r=>tribs.includes(r.tribunal)).map(r=>`${r.tribunal} ${r.tipo} ${r.numero}`).filter(Boolean);
+  const sites=tribs.map(t=>`${t} (${DISCOVER_SITES[t]||'site oficial'})`).join('; ');
+  return `Você é assistente jurídico. Pesquise na internet, priorizando as FONTES OFICIAIS dos tribunais indicados, e identifique precedentes qualificados brasileiros REAIS e verificáveis que NÃO constem da lista "JÁ CADASTRADOS".
+
+Tribunais/fontes: ${sites}.
+Tipos de interesse: ${tipos.join(', ')}.
+Situação: ${sitTxt}.
+${periodo?('Período/foco: '+periodo+'.'):''}
+${extra?('Instruções adicionais: '+extra+'.'):''}
+
+Regras:
+- Traga apenas precedentes que você conseguir confirmar em fontes confiáveis; NÃO invente números, teses, datas ou relatores. Se não tiver certeza de um campo, deixe "".
+- Priorize os mais recentes. Traga no máximo 25 itens.
+- Para cada item, inclua no campo "fonte" a URL oficial de onde a informação foi obtida.
+
+Responda SOMENTE com um array JSON válido, sem markdown. Cada objeto:
+{"tipo":"(um de: ${tipos.map(t=>'"'+t+'"').join(', ')})","tribunal":"(um de: ${tribs.map(t=>'"'+t+'"').join(', ')})","numero":"","recurso":"","relator":"","questao":"","tese":"","transito":"AAAA-MM-DD ou ''","situacao":"Julgado|Afetado","dispositivos":"","leis":["..."],"institutos":["..."],"ramo":"(um de: ${cfg.ramos.map(r=>'"'+r+'"').join(', ')})","fonte":"URL"}
+
+JÁ CADASTRADOS (não repita estes):
+${existentes.slice(0,400).join('\n')||'(nenhum)'}`;
+}
 function salvageObjects(s){const objs=[];let depth=0,start=-1,inStr=false,esc=false;for(let i=0;i<s.length;i++){const c=s[i];if(inStr){if(esc){esc=false;}else if(c==='\\'){esc=true;}else if(c==='"'){inStr=false;}continue;}if(c==='"'){inStr=true;continue;}if(c==='{'){if(depth===0)start=i;depth++;}else if(c==='}'){if(depth>0){depth--;if(depth===0&&start>=0){objs.push(s.slice(start,i+1));start=-1;}}}}const parsed=[];for(const o of objs){try{parsed.push(JSON.parse(o));}catch(e){}}return parsed;}
 function parseAIJson(raw){let s=(raw||'').trim();s=s.replace(/^```(json)?/i,'').replace(/```$/,'').trim();const a=s.indexOf('['),b=s.lastIndexOf(']');const core=(a>=0&&b>a)?s.slice(a,b+1):s;try{const data=JSON.parse(core);return Array.isArray(data)?data:[data];}catch(e){const objs=salvageObjects(s);if(objs.length)return objs;throw e;}}
-async function callGemini(prompt,pdfs){if(!cfg.geminiKey)throw new Error('Configure a chave do Gemini.');const model=cfg.geminiModel||'gemini-2.5-flash';const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(cfg.geminiKey)}`;const parts=[];(pdfs||[]).forEach(p=>parts.push({inline_data:{mime_type:'application/pdf',data:p.b64}}));parts.push({text:prompt});const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents:[{parts}],generationConfig:{temperature:0.1,responseMimeType:'application/json',maxOutputTokens:32768}})});if(!res.ok){const t=await res.text();throw new Error('Gemini '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(((data.candidates||[])[0]||{}).content||{}).parts?.map(p=>p.text).join('')||'';return parseAIJson(txt);}
-async function callClaude(prompt,pdfs){if(!cfg.claudeKey)throw new Error('Configure a chave do Claude.');const model=cfg.claudeModel||'claude-sonnet-4-6';const content=[];(pdfs||[]).forEach(p=>content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:p.b64}}));content.push({type:'text',text:prompt});const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':cfg.claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model,max_tokens:16000,messages:[{role:'user',content}]})});if(!res.ok){const t=await res.text();throw new Error('Claude '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('');return parseAIJson(txt);}
+async function callGemini(prompt,pdfs,useSearch){if(!cfg.geminiKey)throw new Error('Configure a chave do Gemini.');const model=cfg.geminiModel||'gemini-2.5-flash';const url=`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(cfg.geminiKey)}`;const parts=[];(pdfs||[]).forEach(p=>parts.push({inline_data:{mime_type:'application/pdf',data:p.b64}}));parts.push({text:prompt});const genCfg={temperature:0.1,maxOutputTokens:32768};const bodyObj={contents:[{parts}],generationConfig:genCfg};if(useSearch){bodyObj.tools=[{google_search:{}}];}else{genCfg.responseMimeType='application/json';}const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(bodyObj)});if(!res.ok){const t=await res.text();throw new Error('Gemini '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(((data.candidates||[])[0]||{}).content||{}).parts?.map(p=>p.text).filter(Boolean).join('')||'';return parseAIJson(txt);}
+async function callClaude(prompt,pdfs,useSearch){if(!cfg.claudeKey)throw new Error('Configure a chave do Claude.');const model=cfg.claudeModel||'claude-sonnet-4-6';const content=[];(pdfs||[]).forEach(p=>content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:p.b64}}));content.push({type:'text',text:prompt});const bodyObj={model,max_tokens:16000,messages:[{role:'user',content}]};if(useSearch){bodyObj.tools=[{type:'web_search_20250305',name:'web_search',max_uses:8}];}const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':cfg.claudeKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify(bodyObj)});if(!res.ok){const t=await res.text();throw new Error('Claude '+res.status+': '+t.slice(0,300));}const data=await res.json();const txt=(data.content||[]).filter(c=>c.type==='text').map(c=>c.text).join('');return parseAIJson(txt);}
 function fileToB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
 async function addPdfFiles(files){for(const f of files){if(f.type==='application/pdf'||/\.pdf$/i.test(f.name)){try{const b64=await fileToB64(f);loadedPdfs.push({name:f.name,b64});}catch(e){}}}renderPdfList();}
 function renderPdfList(){const el=document.getElementById('ai-pdf-list');el.innerHTML=loadedPdfs.map((p,i)=>`<span class="tag-pill">${esc(p.name)}<button data-pdf-del="${i}">×</button></span>`).join('');el.querySelectorAll('[data-pdf-del]').forEach(b=>b.addEventListener('click',()=>{loadedPdfs.splice(+b.dataset.pdfDel,1);renderPdfList();}));document.getElementById('btn-ia-pdf').disabled=loadedPdfs.length===0;}
@@ -476,11 +592,8 @@ async function classifyExisting(){
   const batch=15;let done=0;
   try{
     for(let i=0;i<alvo.length;i+=batch){
-      const grupo=alvo.slice(i,i+batch);
-      setStatus('work',`Classificando institutos… ${done}/${alvo.length}`);
-      const payload=grupo.map(r=>({id:r.id,tipo:r.tipo,numero:r.numero,ramo:r.ramo,questao:r.questao,tese:r.tese}));
-      const prompt=buildInstitutosPrompt(payload);
-      const items=cfg.provider==='claude'?await callClaude(prompt):await callGemini(prompt);
+      const grupo=alvo.slice(i,i+batch);setStatus('work',`Classificando institutos… ${done}/${alvo.length}`);
+      const items=cfg.provider==='claude'?await callClaude(buildInstitutosPrompt(grupo.map(r=>({id:r.id,tipo:r.tipo,numero:r.numero,ramo:r.ramo,questao:r.questao,tese:r.tese})))):await callGemini(buildInstitutosPrompt(grupo.map(r=>({id:r.id,tipo:r.tipo,numero:r.numero,ramo:r.ramo,questao:r.questao,tese:r.tese}))));
       items.forEach(it=>{const r=state.records.find(x=>x.id===it.id);if(r&&Array.isArray(it.institutos))r.institutos=it.institutos.join('; ');});
       done+=grupo.length;saveData();
     }
@@ -490,6 +603,50 @@ async function classifyExisting(){
 document.getElementById('btn-ia-institutos').addEventListener('click',classifyExisting);
 function renderPreview(){const box=document.getElementById('ai-preview');if(!aiPreviewRecords.length){box.innerHTML='<p class="hint">Os precedentes reconhecidos aparecerão aqui para revisão. Nada é gravado até você confirmar.</p>';return;}box.innerHTML=`<div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn primary small" id="btn-confirm-all">Confirmar e inserir ${aiPreviewRecords.length}</button><button class="btn small" id="btn-discard-all">Descartar</button></div>`+aiPreviewRecords.map((r,i)=>`<div class="preview-card"><div class="pc-top"><span class="tipo-tag">${esc(r.tipo)}</span><span class="num-cell">${esc(r.numero||'s/nº')}</span><span class="sit ${r.situacao==='Julgado'?'julgado':'afetado'}">${esc(r.situacao)}</span><span class="ramo-cell">${esc(r.ramo||'—')}</span><button class="icon-btn" data-prev-del="${i}" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div><div class="pc-tese">${esc((r.tese||r.questao||'—').slice(0,220))}</div>${recordInstitutos(r).length?`<div class="inst-cell" style="margin-top:6px">${recordInstitutos(r).map(x=>`<span class="inst-tag">${esc(x)}</span>`).join('')}</div>`:''}</div>`).join('');box.querySelector('#btn-confirm-all')?.addEventListener('click',()=>{aiPreviewRecords.forEach(r=>state.records.push(normalizeRecord(r)));saveData();refreshSelects();renderAcervo();toast(`${aiPreviewRecords.length} inserido(s)`);aiPreviewRecords=[];renderPreview();setStatus('ok','Inseridos no acervo.');document.querySelector('[data-tab="acervo"]').click();});box.querySelector('#btn-discard-all')?.addEventListener('click',()=>{aiPreviewRecords=[];renderPreview();});box.querySelectorAll('[data-prev-del]').forEach(b=>b.addEventListener('click',()=>{aiPreviewRecords.splice(+b.dataset.prevDel,1);renderPreview();}));}
 
+// ===== Buscar novos precedentes =====
+function renderDiscoverPickers(){
+  const tb=document.getElementById('disc-tribs'), tp=document.getElementById('disc-tipos');
+  tb.innerHTML=DISCOVER_TRIBS.map(t=>`<span class="tag-pill" style="cursor:pointer;${discSelTribs.includes(t)?'background:var(--pine-soft);border-color:var(--pine);color:var(--pine)':''}" data-dtrib="${t}">${t}</span>`).join('');
+  const tipos=['Tema','Tema Repetitivo','Súmula','Súmula Vinculante','IAC','IRDR','PUIL'];
+  tp.innerHTML=tipos.map(t=>`<span class="tag-pill" style="cursor:pointer;${discSelTipos.includes(t)?'background:var(--pine-soft);border-color:var(--pine);color:var(--pine)':''}" data-dtipo="${t}">${esc(t)}</span>`).join('');
+  tb.querySelectorAll('[data-dtrib]').forEach(el=>el.addEventListener('click',()=>{const t=el.dataset.dtrib;if(discSelTribs.includes(t))discSelTribs=discSelTribs.filter(x=>x!==t);else discSelTribs.push(t);renderDiscoverPickers();}));
+  tp.querySelectorAll('[data-dtipo]').forEach(el=>el.addEventListener('click',()=>{const t=el.dataset.dtipo;if(discSelTipos.includes(t))discSelTipos=discSelTipos.filter(x=>x!==t);else discSelTipos.push(t);renderDiscoverPickers();}));
+}
+document.getElementById('btn-disc-clear').addEventListener('click',()=>{discPreviewRecords=[];renderDiscoverPreview();setDiscStatus('','');});
+document.getElementById('btn-disc-run').addEventListener('click',async()=>{
+  if(!discSelTribs.length){setDiscStatus('err','Selecione ao menos um tribunal.');return;}
+  if(!discSelTipos.length){setDiscStatus('err','Selecione ao menos um tipo.');return;}
+  setDiscStatus('work','Pesquisando nas fontes oficiais e na web — pode levar de 30s a 2min…');
+  discPreviewRecords=[];renderDiscoverPreview();
+  try{
+    const prompt=buildDiscoverPrompt();
+    const items=cfg.provider==='claude'?await callClaude(prompt,null,true):await callGemini(prompt,null,true);
+    const existentes=new Set(state.records.map(dupKey));
+    discPreviewRecords=items.map(normalizeRecord).map(r=>({rec:r,dup:existentes.has(dupKey(r))}));
+    if(!discPreviewRecords.length){setDiscStatus('err','Nada retornado. Tente novamente, reduza os tipos ou ajuste o período.');return;}
+    const novos=discPreviewRecords.filter(x=>!x.dup).length;
+    setDiscStatus('ok',`${discPreviewRecords.length} encontrado(s): ${novos} novo(s), ${discPreviewRecords.length-novos} já no acervo. Revise e insira.`);
+    renderDiscoverPreview();
+  }catch(e){setDiscStatus('err','Falha: '+e.message+' — a busca web pode estar bloqueada por CORS (tente o Gemini) ou indisponível no seu plano.');}
+});
+function renderDiscoverPreview(){
+  const box=document.getElementById('disc-preview');
+  if(!discPreviewRecords.length){box.innerHTML='<p class="hint">Os precedentes encontrados aparecerão aqui, marcados como novos ou já existentes, para revisão.</p>';return;}
+  const novos=discPreviewRecords.filter(x=>!x.dup);
+  box.innerHTML=`<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap"><button class="btn primary small" id="btn-disc-insert-novos" ${novos.length?'':'disabled'}>Inserir ${novos.length} novo(s)</button><button class="btn small" id="btn-disc-discard">Descartar</button></div>`+discPreviewRecords.map((x,i)=>{
+    const r=x.rec;
+    return `<div class="preview-card ${x.dup?'dup':''}"><div class="pc-top"><span class="badge ${x.dup?'dup':'novo'}">${x.dup?'já no acervo':'novo'}</span><span class="tipo-tag">${esc(r.tipo)}</span><span class="ramo-cell">${esc(r.tribunal)}</span><span class="num-cell">${esc(r.numero||'s/nº')}</span><span class="sit ${r.situacao==='Julgado'?'julgado':'afetado'}">${esc(r.situacao)}</span><button class="icon-btn" data-disc-del="${i}" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div><div class="pc-tese">${esc((r.tese||r.questao||'—').slice(0,240))}</div>${r.fonte?`<div class="di-meta" style="margin-top:6px;font-size:11px;color:var(--ink-3)">Fonte: ${esc(r.fonte)}</div>`:''}<div style="margin-top:8px"><button class="btn small" data-disc-add="${i}">Inserir este</button></div></div>`;
+  }).join('');
+  box.querySelector('#btn-disc-insert-novos')?.addEventListener('click',()=>{
+    let n=0;discPreviewRecords.forEach(x=>{if(!x.dup){state.records.push(normalizeRecord(x.rec));n++;}});
+    saveData();refreshSelects();renderAcervo();toast(`${n} novo(s) inserido(s)`);discPreviewRecords=[];renderDiscoverPreview();setDiscStatus('ok','Inseridos no acervo.');
+  });
+  box.querySelector('#btn-disc-discard')?.addEventListener('click',()=>{discPreviewRecords=[];renderDiscoverPreview();});
+  box.querySelectorAll('[data-disc-add]').forEach(b=>b.addEventListener('click',()=>{const x=discPreviewRecords[+b.dataset.discAdd];state.records.push(normalizeRecord(x.rec));saveData();refreshSelects();renderAcervo();b.textContent='Inserido';b.disabled=true;toast('Inserido no acervo');}));
+  box.querySelectorAll('[data-disc-del]').forEach(b=>b.addEventListener('click',()=>{discPreviewRecords.splice(+b.dataset.discDel,1);renderDiscoverPreview();}));
+}
+
+// ===== Painéis =====
 function dashData(){return dashScopeIsFiltered?applyFilters(state.records):state.records.slice();}
 function groupCount(list,keyFn){const m={};list.forEach(r=>{const k=keyFn(r)||'— não informado —';m[k]=(m[k]||0)+1;});return Object.entries(m).sort((a,b)=>b[1]-a[1]);}
 function groupCountMulti(list,keysFn){const m={};list.forEach(r=>{const ks=keysFn(r);(ks.length?ks:['— não informado —']).forEach(k=>{m[k]=(m[k]||0)+1;});});return Object.entries(m).sort((a,b)=>b[1]-a[1]);}
@@ -516,7 +673,7 @@ function exportDoc(){
 document.getElementById('btn-export-doc').addEventListener('click',exportDoc);
 function download(name,content,mime){const blob=new Blob([content],{type:mime});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();URL.revokeObjectURL(a.href);}
 document.getElementById('btn-export-json').addEventListener('click',()=>{const payload={app:'repertorio-precedentes',version:1,exportedAt:new Date().toISOString(),cfg:{tipos:cfg.tipos,ramos:cfg.ramos,tribunais:cfg.tribunais,jornadas:cfg.jornadas},records:state.records};download(`backup-precedentes-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify(payload,null,2),'application/json');toast('Backup baixado');});
-document.getElementById('btn-export-csv').addEventListener('click',()=>{const cols=['tipo','tribunal','jornada','numero','recurso','relator','ramo','situacao','transito','questao','tese','dispositivos','leis','institutos','info','relevante'];const head=cols.join(';');const q=s=>'"'+String(s==null?'':s).replace(/"/g,'""').replace(/\r?\n/g,' ')+'"';const body=state.records.map(r=>cols.map(c=>q(r[c])).join(';')).join('\n');download(`precedentes-${new Date().toISOString().slice(0,10)}.csv`,'\ufeff'+head+'\n'+body,'text/csv;charset=utf-8');toast('Planilha exportada');});
+document.getElementById('btn-export-csv').addEventListener('click',()=>{const cols=['tipo','tribunal','jornada','numero','recurso','relator','ramo','situacao','transito','questao','tese','dispositivos','leis','institutos','fonte','info','relevante'];const head=cols.join(';');const q=s=>'"'+String(s==null?'':s).replace(/"/g,'""').replace(/\r?\n/g,' ')+'"';const body=state.records.map(r=>cols.map(c=>q(r[c])).join(';')).join('\n');download(`precedentes-${new Date().toISOString().slice(0,10)}.csv`,'\ufeff'+head+'\n'+body,'text/csv;charset=utf-8');toast('Planilha exportada');});
 function importJson(text){let data;try{data=JSON.parse(text);}catch(e){toast('Arquivo inválido');return;}const recs=Array.isArray(data)?data:(data.records||[]);if(!Array.isArray(recs)||!recs.length){toast('Nenhum registro');return;}const mode=confirm(`O arquivo contém ${recs.length} precedente(s).\n\nOK = SUBSTITUIR\nCancelar = MESCLAR`);if(data.cfg){if(Array.isArray(data.cfg.tipos)&&data.cfg.tipos.length)cfg.tipos=data.cfg.tipos;if(Array.isArray(data.cfg.ramos)&&data.cfg.ramos.length)cfg.ramos=data.cfg.ramos;if(Array.isArray(data.cfg.tribunais)&&data.cfg.tribunais.length)cfg.tribunais=data.cfg.tribunais;if(Array.isArray(data.cfg.jornadas)&&data.cfg.jornadas.length)cfg.jornadas=data.cfg.jornadas;saveCfg();}const norm=recs.map(normalizeRecord);if(mode){state.records=norm;}else{const ids=new Set(state.records.map(r=>r.id));norm.forEach(r=>{if(ids.has(r.id))r.id=uid();state.records.push(r);});}saveData();refreshSelects();renderAcervo();renderTagEditors();toast(mode?'Acervo substituído':'Acervo mesclado');}
 const drop=document.getElementById('drop-json'),fileInput=document.getElementById('file-json');
 drop.addEventListener('click',()=>fileInput.click());
@@ -558,7 +715,7 @@ document.getElementById('new-tribunal').addEventListener('keydown',e=>{if(e.key=
 document.getElementById('new-jornada').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('add-jornada').click();});
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(o=>o.classList.remove('open'));});
-load();refreshSelects();loadCfgFields();refreshModelPickers();renderTagEditors();updateDirBtn();renderAcervo();
+load();refreshSelects();loadCfgFields();refreshModelPickers();renderTagEditors();renderDiscoverPickers();updateDirBtn();renderAcervo();
 </script>
 </body>
 </html>
