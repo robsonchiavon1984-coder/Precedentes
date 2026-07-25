@@ -734,6 +734,9 @@ function renderDiscoverPreview(){
 // ===== CONSULTA POR LEI =====
 function leiIndex(){
   const idx={};
+  // 1) todos os diplomas do catálogo entram na lista, mesmo sem julgado
+  (cfg.leisCat||[]).forEach(l=>{const k=normLaw(l);if(k)idx[k]=idx[k]||{count:0,artigos:{}};});
+  // 2) percorre os julgados e vincula artigos aos diplomas
   state.records.forEach(r=>{
     const seen=new Set();
     recordDispositivos(r).forEach(({lei,artigo})=>{
@@ -750,15 +753,16 @@ function renderLeiTab(){
   const idx=leiIndex();
   const side=document.getElementById('lei-side');
   const leis=Object.keys(idx).sort((a,b)=>a.localeCompare(b,'pt'));
-  if(!leis.length){side.innerHTML='<div class="lei-empty" style="padding:24px 12px">Nenhum diploma catalogado ainda. Preencha o campo “Dispositivos” dos precedentes.</div>';document.getElementById('lei-main').innerHTML='<div class="lei-empty">Sem dados.</div>';return;}
+  if(!leis.length){side.innerHTML='<div class="lei-empty" style="padding:24px 12px">Nenhum diploma no catálogo. Adicione leis na aba “Backup &amp; API”.</div>';document.getElementById('lei-main').innerHTML='<div class="lei-empty">Sem diplomas.</div>';return;}
   if(leiSel && !idx[leiSel])leiSel=null;
-  side.innerHTML=leis.map(l=>`<div class="lei-item ${l===leiSel?'sel':''}" data-lei="${esc(l)}"><span>${esc(l)}</span><span class="c">${idx[l].count}</span></div>`).join('');
+  side.innerHTML=leis.map(l=>{const n=idx[l].count;return `<div class="lei-item ${l===leiSel?'sel':''}" data-lei="${esc(l)}"><span>${esc(l)}</span><span class="c">${n||'—'}</span></div>`;}).join('');
   side.querySelectorAll('[data-lei]').forEach(el=>el.addEventListener('click',()=>{leiSel=el.dataset.lei;renderLeiTab();}));
   renderLeiMain(idx);
 }
 function renderLeiMain(idx){
   const main=document.getElementById('lei-main');
-  if(!leiSel){main.innerHTML='<div class="lei-empty">Selecione um diploma à esquerda para ver os artigos catalogados.</div>';return;}
+  if(!leiSel){main.innerHTML='<div class="lei-empty">Selecione um diploma à esquerda para ver os artigos vinculados a julgados, em ordem.</div>';return;}
+  if(idx[leiSel] && !Object.keys(idx[leiSel].artigos).length){main.innerHTML=`<div class="lei-empty">Nenhum julgado vinculado a <b>${esc(leiSel)}</b> ainda. Preencha o campo “Dispositivos” de algum precedente com esse diploma.</div>`;return;}
 
 // ===== Painéis: gráficos =====
 function dashData(){return dashScopeIsFiltered?applyFilters(state.records):state.records.slice();}
