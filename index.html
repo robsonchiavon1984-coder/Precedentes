@@ -733,7 +733,6 @@ function renderDiscoverPreview(){
 
 // ===== CONSULTA POR LEI =====
 function leiIndex(){
-  // { lei: { count, artigos: { artigo: [recIds...] } } }
   const idx={};
   state.records.forEach(r=>{
     const seen=new Set();
@@ -760,53 +759,6 @@ function renderLeiTab(){
 function renderLeiMain(idx){
   const main=document.getElementById('lei-main');
   if(!leiSel){main.innerHTML='<div class="lei-empty">Selecione um diploma à esquerda para ver os artigos catalogados.</div>';return;}
-  const q=document.getElementById('lei-search').value.trim().toLowerCase();
-  const onlyRelev=document.getElementById('lei-relev').value==='1';
-  const artigos=idx[leiSel]?idx[leiSel].artigos:{};
-  let chaves=Object.keys(artigos);
-  // ordena: artigos com número primeiro (por número), depois "não especificado"
-  chaves.sort((a,b)=>{
-    if(a===SEM_ART)return 1;if(b===SEM_ART)return -1;
-    const d=artKeyNum(a)-artKeyNum(b);if(d!==0)return d;return a.localeCompare(b,'pt',{numeric:true});
-  });
-  let rows='';
-  let totalArts=0, totalJul=0;
-  chaves.forEach(art=>{
-    let recs=artigos[art].map(id=>state.records.find(x=>x.id===id)).filter(Boolean);
-    if(onlyRelev)recs=recs.filter(r=>r.relevante);
-    if(q){
-      const artMatch=art.toLowerCase().includes(q);
-      if(!artMatch)recs=recs.filter(r=>[r.tipo,r.numero,r.recurso,r.relator,r.questao,r.tese,r.dispositivos,r.institutos,r.tribunal,r.situacao].join(' ').toLowerCase().includes(q));
-    }
-    if(!recs.length)return;
-    totalArts++;totalJul+=recs.length;
-    const jul=sortRecords(recs).map(r=>`<div class="jul-line" data-open="${r.id}"><span class="tipo-tag">${esc(r.tipo)}</span><div class="jl-body"><div><span class="num-cell">${esc(r.numero||'s/nº')}</span> <span class="ramo-cell">${esc(r.tribunal||'')}</span> <span class="sit ${sitClass(r.situacao)}">${esc(r.situacao)}</span></div><div class="jl-tese">${esc((r.tese||r.questao||'—').slice(0,240))}${(r.tese||r.questao||'').length>240?'…':''}</div></div></div>`).join('');
-    const open=q?'open':'';
-    rows+=`<div class="artigo-row ${open}"><div class="artigo-head" data-art><span class="artigo-num">${esc(art)}</span><span class="ramo-cell" style="flex:1">${art===SEM_ART?'julgados vinculados ao diploma, sem artigo específico':'dispositivo catalogado'}</span><span class="artigo-count">${recs.length} julgado(s)</span></div><div class="artigo-julgados">${jul}</div></div>`;
-  });
-  if(!rows){main.innerHTML=`<div class="lei-empty">Nenhum artigo de <b>${esc(leiSel)}</b> corresponde ao filtro.</div>`;return;}
-  main.innerHTML=`<div style="padding:12px 16px;border-bottom:1px solid var(--line);background:var(--paper-3)"><b style="font-family:var(--serif);font-size:16px;color:var(--pine)">${esc(leiSel)}</b> <span class="hint">— ${totalArts} artigo(s) catalogado(s), ${totalJul} vínculo(s)</span></div>`+rows;
-  main.querySelectorAll('[data-art]').forEach(h=>h.addEventListener('click',()=>h.closest('.artigo-row').classList.toggle('open')));
-  main.querySelectorAll('[data-open]').forEach(l=>l.addEventListener('click',()=>openDetail(l.dataset.open)));
-}
-document.getElementById('lei-search').addEventListener('input',()=>{if(leiSel)renderLeiTab();});
-document.getElementById('lei-relev').addEventListener('change',()=>{if(leiSel)renderLeiTab();});
-document.getElementById('btn-lei-expand').addEventListener('click',()=>document.querySelectorAll('#lei-main .artigo-row').forEach(r=>r.classList.add('open')));
-document.getElementById('btn-lei-collapse').addEventListener('click',()=>document.querySelectorAll('#lei-main .artigo-row').forEach(r=>r.classList.remove('open')));
-document.getElementById('btn-lei-doc').addEventListener('click',()=>{
-  if(!leiSel){toast('Selecione um diploma');return;}
-  const idx=leiIndex();const artigos=idx[leiSel]?idx[leiSel].artigos:{};
-  let chaves=Object.keys(artigos).sort((a,b)=>{if(a===SEM_ART)return 1;if(b===SEM_ART)return -1;const d=artKeyNum(a)-artKeyNum(b);return d!==0?d:a.localeCompare(b,'pt',{numeric:true});});
-  let body='';
-  chaves.forEach(art=>{
-    const recs=sortRecords(artigos[art].map(id=>state.records.find(x=>x.id===id)).filter(Boolean));
-    if(!recs.length)return;
-    body+=`<h3 style="font-family:Georgia,serif;color:#0f4d3a">${esc(art)} <span style="font-size:10pt;color:#6b756e">(${recs.length})</span></h3><ul>`+recs.map(r=>`<li><b>${esc(r.tipo)} ${esc(r.numero||'s/nº')}</b> — ${esc(r.tribunal||'')} — <i>${esc(r.situacao)}</i>: ${esc((r.tese||r.questao||'').slice(0,500))}</li>`).join('')+`</ul>`;
-  });
-  const now=new Date().toLocaleDateString('pt-BR');
-  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Consulta por lei</title><style>body{font-family:Calibri,Arial,sans-serif;color:#1c231f}h1,h3{font-family:Georgia,serif;color:#0f4d3a}li{margin:3px 0;font-size:10.5pt}</style></head><body><h1>Consulta por lei — ${esc(leiSel)}</h1><p><i>Gerado em ${now}. Artigos catalogados e julgados vinculados no acervo.</i></p>${body||'<p>Sem artigos catalogados.</p>'}</body></html>`;
-  const blob=new Blob(['\ufeff'+html],{type:'application/msword'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='consulta-por-lei.doc';a.click();URL.revokeObjectURL(a.href);toast('Consulta exportada (.doc)');
-});
 
 // ===== Painéis: gráficos =====
 function dashData(){return dashScopeIsFiltered?applyFilters(state.records):state.records.slice();}
