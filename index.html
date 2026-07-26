@@ -427,7 +427,7 @@ let aiSubgroups=null, leiSel=null, leiSideFilter='';
 
 function geminiList(){return (cfg.geminiModels&&cfg.geminiModels.length)?cfg.geminiModels:FALLBACK_GEMINI;}
 function claudeList(){return (cfg.claudeModels&&cfg.claudeModels.length)?cfg.claudeModels:FALLBACK_CLAUDE;}
-function load(){try{const d=JSON.parse(localStorage.getItem(LS_DATA));if(d&&Array.isArray(d.records))state=d;}catch(e){}try{const c=JSON.parse(localStorage.getItem(LS_CFG));if(c)cfg=Object.assign(cfg,c);}catch(e){}
+function load(){try{const d=JSON.parse(localStorage.getItem(LS_DATA));if(d&&Array.isArray(d.records))state={records:d.records.map(normalizeRecord)};}catch(e){}try{const c=JSON.parse(localStorage.getItem(LS_CFG));if(c)cfg=Object.assign(cfg,c);}catch(e){}
  if(!cfg.tipos||!cfg.tipos.length)cfg.tipos=[...DEFAULT_TIPOS];CONTROLE.forEach(t=>{if(!cfg.tipos.includes(t))cfg.tipos.splice(Math.max(0,cfg.tipos.length-1),0,t);});
  if(!cfg.situacoes||!cfg.situacoes.length)cfg.situacoes=[...DEFAULT_SITUACOES];if(!cfg.ramos||!cfg.ramos.length)cfg.ramos=[...DEFAULT_RAMOS];if(!cfg.tribunais||!cfg.tribunais.length)cfg.tribunais=[...DEFAULT_TRIBUNAIS];if(!cfg.leisCat||!cfg.leisCat.length)cfg.leisCat=[...DEFAULT_LEIS];if(!cfg.institutosCat||!cfg.institutosCat.length)cfg.institutosCat=[...DEFAULT_INSTITUTOS];if(!cfg.jornadas||!cfg.jornadas.length)cfg.jornadas=[...DEFAULT_JORNADAS];if(!Array.isArray(cfg.geminiModels))cfg.geminiModels=[];if(!Array.isArray(cfg.claudeModels))cfg.claudeModels=[];
 }
@@ -439,26 +439,70 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 function fmtDate(iso){if(!iso)return '—';const p=iso.split('-');return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:iso;}
 function yearOf(iso){if(!iso)return null;const p=(''+iso).split('-');return p[0]||null;}
 function sitClass(s){s=(s||'').toLowerCase();if(s.indexOf('cancel')>=0||s.indexOf('super')>=0||s.indexOf('desafet')>=0||s.indexOf('prejudic')>=0||s.indexOf('improced')>=0)return 'cancel';if(s.indexOf('julgad')>=0||s.indexOf('proced')>=0||s.indexOf('trânsito')>=0||s.indexOf('transito')>=0)return 'julgado';if(s.indexOf('afetad')>=0||s.indexOf('sobrest')>=0||s.indexOf('pendent')>=0||s.indexOf('liminar')>=0)return 'afetado';return 'neutro';}
-function normLaw(t){t=(t||'').replace(/\s+/g,' ').trim();if(!t)return '';const base=t.replace(/\/\d{2,4}$/,'');if(/^[A-Za-zÇç]{1,6}$/.test(base))return base.toUpperCase();return t;}
-function parseLaws(text){if(!text)return [];const out=new Set();(text.match(/\b(CF|CRFB|CPC|CC|CP|CPP|CLT|CTN|CDC|CTB|ECA|LINDB|ADCT|LEP|LC|CE)\b(\/\d{2,4})?/gi)||[]).forEach(m=>out.add(normLaw(m)));(text.match(/lei(?:\s+complementar)?\s*(?:n?[ºo.]+\s*)?[\d.]+(?:\/\d{2,4})?/gi)||[]).forEach(m=>out.add(m.replace(/\s+/g,' ').trim()));(text.match(/c[óo]digo\s+[a-zàáâãçéíóôõú]+/gi)||[]).forEach(m=>out.add(m.replace(/\s+/g,' ').replace(/^./,c=>c.toUpperCase())));if(/constitui[çc][ãa]o/i.test(text))out.add('CF');return [...out];}
-function splitList(s){return (s||'').split(/[;,]/).map(x=>x.trim()).filter(Boolean);}
-function recordLaws(r){const ex=splitList(r.leis).map(normLaw).filter(Boolean);if(ex.length)return [...new Set(ex)];return [...new Set(parseLaws(r.dispositivos||'').map(normLaw).filter(Boolean))];}
+// diplomas por extenso -> sigla canônica (primeiro que casar vence)
+const NOME2SIGLA=[
+ [/c[óo]digo\s+de\s+processo\s+civil/i,'CPC'],
+ [/c[óo]digo\s+de\s+processo\s+penal/i,'CPP'],
+ [/c[óo]digo\s+de\s+defesa\s+do\s+consumidor/i,'CDC'],
+ [/c[óo]digo\s+tribut[áa]rio\s+nacional/i,'CTN'],
+ [/c[óo]digo\s+de\s+tr[âa]nsito(\s+brasileiro)?/i,'CTB'],
+ [/c[óo]digo\s+civil/i,'CC'],
+ [/c[óo]digo\s+penal/i,'CP'],
+ [/consolida[çc][ãa]o\s+das\s+leis\s+do\s+trabalho/i,'CLT'],
+ [/constitui[çc][ãa]o\s+federal/i,'CF'],
+ [/constitui[çc][ãa]o(\s+da\s+rep[úu]blica)?/i,'CF'],
+ [/estatuto\s+da\s+crian[çc]a\s+e\s+do\s+adolescente/i,'ECA'],
+ [/lei\s+de\s+introdu[çc][ãa]o/i,'LINDB'],
+];
+// normaliza um pedaço de texto para um rótulo de diploma canônico; '' se nada casar
+function canonLaw(raw){
+  raw=(raw==null?'':String(raw)).replace(/\s+/g,' ').trim();if(!raw)return '';
+  for(const [re,sig] of NOME2SIGLA){if(re.test(raw))return sig;}
+  let m=raw.match(/\b(CRFB|CF|CPC|CPP|CLT|CTN|CDC|CTB|ECA|LINDB|ADCT|LEP|CC|CP)\b/i);
+  if(m){let s=m[1].toUpperCase();if(s==='CRFB')s='CF';return s;}
+  m=raw.match(/lei\s+complementar\s+n?[ºo.]*\s*([\d.]+)(?:\/(\d{2,4}))?/i);
+  if(m)return 'LC '+m[1].replace(/\.$/,'')+(m[2]?('/'+m[2]):'');
+  m=raw.match(/lei\s+n?[ºo.]*\s*([\d.]+)(?:\/(\d{2,4}))?/i);
+  if(m)return 'Lei '+m[1].replace(/\.$/,'')+(m[2]?('/'+m[2]):'');
+  return '';
+}
+// mantido por compatibilidade (nome do diploma canônico) — usado onde antes se chamava normLaw
+function normLaw(t){const c=canonLaw(t);if(c)return c;t=(t||'').replace(/\s+/g,' ').trim();return t;}
+// todos os diplomas canônicos citados num texto livre
+function parseLaws(text){
+  if(!text)return [];if(Array.isArray(text))text=text.join('; ');text=String(text);const out=new Set();
+  text.split(/;|\u2022|\n/).forEach(seg=>{const c=canonLaw(seg);if(c)out.add(c);});
+  // varredura extra: cada sigla/lei solta no texto inteiro
+  (text.match(/\b(CF|CRFB|CPC|CPP|CLT|CTN|CDC|CTB|ECA|LINDB|ADCT|LEP|CC|CP)\b(\/\d{2,4})?/gi)||[]).forEach(m=>{const c=canonLaw(m);if(c)out.add(c);});
+  (text.match(/lei(?:\s+complementar)?\s+n?[ºo.]*\s*[\d.]+(?:\/\d{2,4})?/gi)||[]).forEach(m=>{const c=canonLaw(m);if(c)out.add(c);});
+  (text.match(/c[óo]digo\s+[a-zàáâãçéíóôõú\s]+?(?=[,;.]|$)/gi)||[]).forEach(m=>{const c=canonLaw(m);if(c)out.add(c);});
+  return [...out];
+}
+function splitList(s){if(Array.isArray(s))return s.map(x=>(x==null?'':String(x)).trim()).filter(Boolean);return (s==null?'':String(s)).split(/[;,]/).map(x=>x.trim()).filter(Boolean);}
+function recordLaws(r){const ex=splitList(r.leis).map(canonLaw).filter(Boolean);if(ex.length)return [...new Set(ex)];return [...new Set(parseLaws(r.dispositivos||''))];}
 function recordInstitutos(r){return [...new Set(splitList(r.institutos))];}
-function artKeyNum(a){const m=(''+a).match(/\d+/);return m?parseInt(m[0],10):999999;}
+function artKeyNum(a){const m=(''+a).replace(/\.(?=\d{3}\b)/g,'').match(/\d+/);return m?parseInt(m[0],10):999999;}
+// extrai rótulos de artigo de um segmento ("art. 421", "art. 3º", "art. 1.030")
+function extractArticles(seg){
+  const arts=[];const re=/art(?:igo)?s?\.?\s*(\d[\d.]*)\s*([ºo°]?)/gi;let m;
+  while((m=re.exec(seg))){let num=m[1].replace(/\.(?=\d{3}\b)/g,'').replace(/\.$/,'');arts.push('art. '+num+(m[2]?'º':''));}
+  return arts;
+}
 function recordDispositivos(r){
-  const txt=r.dispositivos||'';const out=[];
+  const txt=(r&&r.dispositivos!=null)?String(r.dispositivos):'';const out=[];const push=(lei,art)=>{if(!out.some(o=>o.lei===lei&&o.artigo===art))out.push({lei,artigo:art});};
   if(txt.trim()){
-    txt.split(/;|\u2022/).forEach(seg=>{
+    txt.split(/;|\u2022|\n/).forEach(seg=>{
       seg=seg.trim();if(!seg)return;
-      const leis=parseLaws(seg);
-      const arts=[...seg.matchAll(/art(?:igo)?s?\.?\s*(\d+[ºo]?(?:\s*[-–]\s*[A-Za-z])?)/gi)].map(m=>('art. '+m[1].replace(/\s+/g,'')));
-      if(leis.length){leis.forEach(l=>{if(arts.length)arts.forEach(a=>out.push({lei:normLaw(l),artigo:a}));else out.push({lei:normLaw(l),artigo:SEM_ART});});}
+      const lei=canonLaw(seg);const arts=extractArticles(seg);
+      if(lei){if(arts.length)arts.forEach(a=>push(lei,a));else push(lei,SEM_ART);}
     });
   }
-  recordLaws(r).forEach(l=>{if(!out.some(o=>o.lei===l))out.push({lei:l,artigo:SEM_ART});});
+  // diplomas do campo "leis" (ou derivados) sem artigo entram como referência geral
+  recordLaws(r).forEach(l=>{if(!out.some(o=>o.lei===l))push(l,SEM_ART);});
   return out;
 }
-function normalizeRecord(r){return {id:r.id||uid(),tipo:r.tipo||'Tema',tribunal:r.tribunal||'',jornada:r.jornada||'',numero:r.numero||'',recurso:r.recurso||'',relator:r.relator||'',questao:r.questao||'',tese:r.tese||'',transito:r.transito||'',info:r.info||'',situacao:(r.situacao&&String(r.situacao).trim())||'Julgado',dispositivos:r.dispositivos||'',leis:Array.isArray(r.leis)?r.leis.join('; '):(r.leis||''),institutos:Array.isArray(r.institutos)?r.institutos.join('; '):(r.institutos||''),ramo:r.ramo||'',fonte:r.fonte||'',relevante:!!r.relevante,createdAt:r.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
+function toStr(v){return v==null?'':(Array.isArray(v)?v.map(x=>x==null?'':String(x)).filter(Boolean).join('; '):String(v));}
+function normalizeRecord(r){r=r||{};return {id:r.id||uid(),tipo:toStr(r.tipo)||'Tema',tribunal:toStr(r.tribunal),jornada:toStr(r.jornada),numero:toStr(r.numero),recurso:toStr(r.recurso),relator:toStr(r.relator),questao:toStr(r.questao),tese:toStr(r.tese),transito:toStr(r.transito),info:toStr(r.info),situacao:(r.situacao&&String(r.situacao).trim())||'Julgado',dispositivos:toStr(r.dispositivos),leis:toStr(r.leis),institutos:toStr(r.institutos),ramo:toStr(r.ramo),fonte:toStr(r.fonte),relevante:!!r.relevante,createdAt:r.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
 function dupKey(r){return [(r.tribunal||'').trim().toUpperCase(),(r.tipo||'').trim().toUpperCase(),(''+(r.numero||'')).replace(/[^\dA-Za-z]/g,'').toUpperCase()].join('|');}
 
 document.querySelectorAll('.tab-btn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('view-'+b.dataset.tab).classList.add('active');if(b.dataset.tab==='paineis'){renderDashboard();refreshMindControls();}if(b.dataset.tab==='descobrir')renderDiscoverPickers();if(b.dataset.tab==='lei')renderLeiTab();});});
@@ -736,7 +780,7 @@ function renderDiscoverPreview(){
 function leiIndex(){
   const idx={};
   // 1) todos os diplomas do catálogo entram na lista, mesmo sem julgado
-  (cfg.leisCat||[]).forEach(l=>{const k=normLaw(l);if(k)idx[k]=idx[k]||{count:0,artigos:{}};});
+  (cfg.leisCat||[]).forEach(l=>{const k=canonLaw(l)||(l||'').trim();if(k)idx[k]=idx[k]||{count:0,artigos:{}};});
   // 2) percorre os julgados e vincula artigos aos diplomas
   state.records.forEach(r=>{
     const seen=new Set();
