@@ -2,8 +2,11 @@ from mcp.server.fastmcp import FastMCP
 import json
 import os
 
-# Inicializa o servidor FastMCP
-mcp = FastMCP("Precedentes-Jurisprudenciais")
+# Obtém a porta do Render (padrão 8000 se não estiver definida)
+port = int(os.environ.get("PORT", 8000))
+
+# Inicializa o FastMCP configurando host e port
+mcp = FastMCP("Precedentes-Jurisprudenciais", host="0.0.0.0", port=port)
 
 # Carrega a base de dados JSON
 with open("backup-precedentes.json", "r", encoding="utf-8") as f:
@@ -16,7 +19,6 @@ def buscar_precedentes(termo: str, tribunal: str = None) -> list:
     termo_lower = termo.lower()
     
     for item in PRECEDENTES:
-        # Busca textual nas chaves comuns
         texto_busca = f"{item.get('tema', '')} {item.get('tese', '')} {item.get('ementa', '')}".lower()
         tribunal_item = item.get('tribunal', '').upper()
         
@@ -25,7 +27,7 @@ def buscar_precedentes(termo: str, tribunal: str = None) -> list:
                 continue
             resultados.append(item)
             
-    return resultados[:10]  # Retorna os 10 mais relevantes
+    return resultados[:10]
 
 @mcp.tool()
 def consultar_por_numero(tipo: str, numero: str) -> dict:
@@ -36,5 +38,4 @@ def consultar_por_numero(tipo: str, numero: str) -> dict:
     return {"status": "não encontrado"}
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    mcp.run(transport="sse", host="0.0.0.0", port=port)
+    mcp.run(transport="sse")
