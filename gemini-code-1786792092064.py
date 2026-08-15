@@ -6,7 +6,7 @@ import os
 mcp = FastMCP("Precedentes-Jurisprudenciais")
 
 # Carrega a base de dados JSON
-with open("precedentes.json", "r", encoding="utf-8") as f:
+with open("backup-precedentes.json", "r", encoding="utf-8") as f:
     PRECEDENTES = json.load(f)
 
 @mcp.tool()
